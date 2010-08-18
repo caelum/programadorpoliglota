@@ -5,6 +5,7 @@ class CreateTweets < ActiveRecord::Migration
       t.datetime :date
       t.string :image_url
       t.string :text
+      t.integer :tag_id
       t.timestamps
     end
   end

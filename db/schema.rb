@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20100817211335) do
     t.datetime "date"
     t.string   "image_url"
     t.string   "text"
+    t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

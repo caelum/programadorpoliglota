@@ -1,0 +1,12 @@
+<html>
+	<body>
+		Lista de tweets para #java
+		<ul>
+			<% @tweets.each do |t| %>
+				<li>
+					<%= t.user %> -- <%= t.text %>
+				</li>
+			<% end %>
+		</ul>
+	</body>
+</html>
