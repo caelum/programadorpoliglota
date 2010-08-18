@@ -10,6 +10,8 @@ gem 'mysql'
 
 gem 'twitter'
 
+gem 'whenever'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

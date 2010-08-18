@@ -6,6 +6,7 @@ class CreateTweets < ActiveRecord::Migration
       t.string :image_url
       t.string :text
       t.integer :tag_id
+      t.string :tweet_id
       t.timestamps
     end
   end
