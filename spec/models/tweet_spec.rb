@@ -12,6 +12,7 @@ describe Tweet do
       tag = mock_model(Tag)
       tag.should_receive(:name).and_return('#java')
       Tag.should_receive(:all).and_return([tag])
+      Link.should_receive(:create_from)
       
       query = Object.new 
       Tweet.should_receive(:where).with(:tag_id=>tag.id).and_return(query)
@@ -36,6 +37,7 @@ describe Tweet do
       tag = mock_model(Tag)
       tag.should_receive(:name).and_return('#java')
       Tag.should_receive(:all).and_return([tag])
+      Link.should_receive(:create_from)
       
       tweet = mock_model(Tweet)
       tweet.should_receive(:tweet_id).and_return(10)

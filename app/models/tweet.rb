@@ -1,5 +1,6 @@
 class Tweet < ActiveRecord::Base
   belongs_to :tag
+  has_many :links
 
   def self.add_new_tweets
     tags = Tag.all
@@ -21,14 +22,8 @@ class Tweet < ActiveRecord::Base
   
   def self.create_new_tweets_from_query(twitter_query, tag)    
     twitter_query.each do |tweet|
-      new_tweet = Tweet.new
-      new_tweet.user = tweet.from_user
-      new_tweet.text = tweet.text
-      new_tweet.date = tweet.created_at
-      new_tweet.image_url = tweet.profile_image_url
-      new_tweet.tag = tag
-      new_tweet.tweet_id = tweet.id
-      new_tweet.save
+      new_tweet = Tweet.create :user=> tweet.from_user, :text=>tweet.text, :date=>tweet.created_at, :image_url=>tweet.profile_image_url, :tag=> tag, :tweet_id=>tweet.id
+      Link.create_from(new_tweet)
       tag.tweets << new_tweet
     end
   end
