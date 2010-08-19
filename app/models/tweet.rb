@@ -14,10 +14,7 @@ class Tweet < ActiveRecord::Base
   def self.build_twitter_query_for(tag)
     last_tweet = Tweet.where(:tag_id=>tag.id).order('date').last
     twitter_query = Twitter::Search.new(tag.name).lang('pt').per_page(100)
-
-    if last_tweet
-      twitter_query = twitter_query.since(last_tweet.tweet_id.to_i)
-    end
+    twitter_query = twitter_query.since(last_tweet.tweet_id.to_i) if last_tweet
 
     twitter_query
   end
