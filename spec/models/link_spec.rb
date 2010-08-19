@@ -32,4 +32,10 @@ describe Link do
       tweet.links.size.should == 0
     end
   end
+  
+  describe "#most_popular_today_from" do
+    it "should return most popular links today for a given tag" do
+      pending
+    end
+  end  
 end

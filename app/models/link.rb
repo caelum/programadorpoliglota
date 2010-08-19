@@ -8,4 +8,12 @@ class Link < ActiveRecord::Base
       tweet.links << link
     end
   end
+  
+  def self.most_popular_today_for(tag)
+      select('count(links.url) as quantity, links.url')
+        .joins(:tweet => :tag)
+        .where('tweets.date' => (Time.now - 1.day)..Time.now, 'tags.name' => tag.name)
+        .group('links.url')
+        .order('quantity desc')
+  end
 end

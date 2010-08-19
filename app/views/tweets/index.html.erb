@@ -1,12 +1,26 @@
 <html>
 	<body>
-		Lista de tweets para #java
-		<ul>
-			<% @tweets.each do |t| %>
+		<% @tags.each do |tag| %>
+			Tag: <%= tag.name %> <br />
+
+			Tweets: 
+			<ul>
+			<% @tweets[tag.name].each do |t| %>					
 				<li>
-					<%= t.user %> -- <%= t.text %>
+					<img src='<%=t.image_url %>' width='48' height='48'/><%= t.user %> -- <%= t.text %>
 				</li>
-			<% end %>
-		</ul>
+			<% end%>
+			</ul>
+			
+			Links: 
+			<ul>
+			<% @links[tag.name].each do |l| %>					
+				<li>
+					<%= l.quantity %> -- <a href="<%= l.url %>"><%= l.url %></a>
+				</li>
+			<% end%>
+			</ul>
+			<hr />
+		<% end %>
 	</body>
 </html>
