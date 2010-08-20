@@ -38,9 +38,26 @@ describe Link do
     end
   end
   
-  describe "#most_popular_today_from" do
-    it "should return most popular links today for a given tag" do
-      pending
+  describe "#most_popular_for" do
+    it "should return most popular links for a given tag ordered by quantity" do
+      tag = Tag.create :name=>'#java'
+      non_famous_link = Link.create :url=>'http://www.example.com', :quantity=>2, :tag=>tag
+      Link.create :url=>'http://www.examplewow.com', :quantity=>3, :tag=>tag
+      famous_link = Link.create :url=>'http://www.anotherexample.com', :quantity=>5, :tag=>tag
+      
+      popular_links = Link.most_popular_for(tag)
+      popular_links.first.should == famous_link
+      popular_links.last == non_famous_link
+    end
+    
+    it "should return most popular links for a given tag ordered by updated time" do
+      tag = Tag.create :name=>'#java'
+      older = Link.create :url=>'http://www.examplewow.com', :quantity=>3, :tag=>tag, :updated_at => Time.now-1.day
+      newer = Link.create :url=>'http://www.example.com', :quantity=>3, :tag=>tag
+
+      popular_links = Link.most_popular_for(tag)
+      popular_links.first.should == newer
+      popular_links.last == older
     end
   end  
 end
