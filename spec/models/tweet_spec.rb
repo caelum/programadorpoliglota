@@ -42,10 +42,11 @@ describe Tweet do
       tweet = mock_model(Tweet)
       tweet.should_receive(:tweet_id).and_return(10)
       
-      query = Object.new 
-      Tweet.should_receive(:where).with(:tag_id=>tag.id).and_return(query)
-      query.should_receive(:order).with('date').and_return(query)
-      query.should_receive(:last).and_return(tweet)
+      #query = Object.new 
+      #Tweet.should_receive(:where).with(:tag_id=>tag.id).and_return(query)
+      #query.should_receive(:order).with('date').and_return(query)
+      #query.should_receive(:last).and_return(tweet)
+      Tweet.stub_chain(:where, :order, :last).and_return(tweet)
       
       tweets = Hashie::Mash.new
       
