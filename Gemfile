@@ -31,6 +31,10 @@ gem 'whenever'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-   gem 'rspec-rails', '>= 2.0.0.beta.19'
+	gem 'ZenTest'
+	gem 'test_notifier'
+	gem 'autotest-rails'
+	gem 'autotest'
+	gem 'rspec-rails', '>= 2.0.0.beta.19'
 end
 
