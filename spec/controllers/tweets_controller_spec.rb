@@ -18,12 +18,12 @@ describe TweetsController do
     end
     
     it "should retrieve all links for #java Tag" do
-      java_tag = Tag.new(:name=>'#java')
+      java_tag = Tag.new :name=>'#java'
       tags = [java_tag]
       links = [Link.new, Link.new]
       
       Tag.should_receive(:all).and_return(tags)
-      Link.should_receive(:most_popular_today_for).with(java_tag).and_return(links)
+      Link.should_receive(:most_popular_for).with(java_tag).and_return(links)
       
       get :index
       links_found = assigns(:links)
