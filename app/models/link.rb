@@ -16,6 +16,6 @@ class Link < ActiveRecord::Base
   end
 
   def self.most_popular_for(tag)
-      where(:tag_id=>tag.id).order('quantity DESC, updated_at DESC')
+      where(:tag_id=>tag.id).limit(5).order('quantity DESC, updated_at DESC')
   end
 end
