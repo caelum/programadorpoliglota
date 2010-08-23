@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
     @tweets = {}
     @links = {}
     @tags.each do |tag|
-      @tweets[tag.name] = Tweet.joins(:tag).where(:tags=>{:name=>tag.name}).order('date DESC')
+      @tweets[tag.name] = Tweet.last_tweets_for tag
       @links[tag.name] = Link.most_popular_for tag
     end
   end

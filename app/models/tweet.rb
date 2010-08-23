@@ -9,6 +9,10 @@ class Tweet < ActiveRecord::Base
     end
   end
   
+  def self.last_tweets_for(tag)
+    joins(:tag).where(:tags=>{:name=>tag.name}).order('date DESC').limit(10)
+  end
+  
   private
 
   def self.build_twitter_query_for(tag)

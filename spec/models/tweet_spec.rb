@@ -61,4 +61,28 @@ describe Tweet do
       Tweet.add_new_tweets
     end 
   end
+  
+  describe '#last_tweets_for_tag' do
+    it 'should return the tweets for a given tag' do
+      java_tag = Tag.create :name=> '#java'
+      ruby_tag = Tag.create :name=> '#ruby'
+      Tweet.create :text=>'tweet 1', :tag=>java_tag
+      Tweet.create :text=>'tweet 2', :tag=>ruby_tag
+      
+      found = Tweet.last_tweets_for java_tag
+      
+      found.size.should == 1
+    end
+    
+    it 'should return the tweets ordered by date (DESC)' do
+      java_tag = Tag.create :name=> '#java'
+      newer_1 = Tweet.create :text=>'tweet 2', :tag=>java_tag
+      newer_2 = Tweet.create :text=>'tweet 2', :tag=>java_tag
+      older = Tweet.create :text=>'older', :tag=>java_tag, :created_at=>Time.now-1.day
+      
+      found = Tweet.last_tweets_for java_tag
+      
+      found[2].should == older
+    end
+  end
 end

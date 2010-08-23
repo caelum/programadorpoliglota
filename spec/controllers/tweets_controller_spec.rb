@@ -8,9 +8,7 @@ describe TweetsController do
       
       Tag.should_receive(:all).and_return(tags)
       query = Object.new
-      Tweet.should_receive(:joins).with(:tag).and_return(query) 
-      query.should_receive(:where).with(:tags=>{:name=>'#java'}).and_return(query)
-      query.should_receive(:order).with('date DESC').and_return(tweets)
+      Tweet.should_receive(:last_tweets_for).and_return(tweets)
       
       get :index
       tweets_found = assigns(:tweets)

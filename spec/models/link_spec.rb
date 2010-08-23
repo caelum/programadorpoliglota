@@ -34,7 +34,6 @@ describe Link do
       
       tweet = Tweet.new :text=>"Esse eh um teste http:// com link incompleto"
       links = Link.create_from tweet
-      
     end
   end
   
