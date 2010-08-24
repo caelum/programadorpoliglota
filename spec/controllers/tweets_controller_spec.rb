@@ -27,5 +27,9 @@ describe TweetsController do
       links_found = assigns(:links)
       links_found['#java'].should eq(links)
     end
+    
+    it "should paginate results" do
+      pending
+    end
   end
 end

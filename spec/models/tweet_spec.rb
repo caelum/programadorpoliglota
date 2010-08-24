@@ -76,13 +76,22 @@ describe Tweet do
     
     it 'should return the tweets ordered by date (DESC)' do
       java_tag = Tag.create :name=> '#java'
-      newer_1 = Tweet.create :text=>'tweet 2', :tag=>java_tag
-      newer_2 = Tweet.create :text=>'tweet 2', :tag=>java_tag
-      older = Tweet.create :text=>'older', :tag=>java_tag, :created_at=>Time.now-1.day
-      
+      newer_1 = Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
+      older = Tweet.create :text=>'older', :tag=>java_tag, :date=>Time.now-1.day
+      newer_2 = Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
+
       found = Tweet.last_tweets_for java_tag
-      
       found[2].should == older
+    end
+    
+    it 'should return the tweets paginated' do
+      java_tag = Tag.create :name=> '#java'
+      newer_tweet = Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
+      older_tweet = Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now - 1.day
+      
+      found = Tweet.last_tweets_for(java_tag, :offset=>1)
+      found[0].should == newer_tweet
+      found.size == 1
     end
   end
 end
