@@ -4,11 +4,11 @@ describe TweetsController do
   describe "#index" do
     it "should retrive all tweets for #java Tag" do
       tweets = [Tweet.new, Tweet.new]
-      tags = [Tag.new(:name=>'#java')]
+      tag = Tag.new(:name=>'#java')
       
-      Tag.should_receive(:all).and_return(tags)
+      Tag.should_receive(:all).and_return([tag])
       query = Object.new
-      Tweet.should_receive(:last_tweets_for).and_return(tweets)
+      Tweet.should_receive(:last_tweets_for).with(tag, :page=>1).and_return(tweets)
       
       get :index
       tweets_found = assigns(:tweets)
@@ -21,6 +21,7 @@ describe TweetsController do
       links = [Link.new, Link.new]
       
       Tag.should_receive(:all).and_return(tags)
+      Tweet.should_receive(:last_tweets_for) 
       Link.should_receive(:most_popular_for).with(java_tag).and_return(links)
       
       get :index
@@ -28,8 +29,12 @@ describe TweetsController do
       links_found['#java'].should eq(links)
     end
     
-    it "should paginate results" do
-      pending
+    it "should use the given page number for pagination" do
+      tag = Tag.new(:name=>'#java')
+      Tag.should_receive(:all).and_return([tag])
+      Tweet.should_receive(:last_tweets_for).with(tag, :page=>2)
+      
+      get :index, :page=>2
     end
   end
 end
