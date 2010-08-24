@@ -10,9 +10,11 @@ class Tweet < ActiveRecord::Base
   end
   
   def self.last_tweets_for(tag, hash={})
-    options = {:offset=>0}
-    options.merge hash
-    joins(:tag).where(:tags=>{:name=>tag.name}).limit(10).offset(options[:offset]).order('date DESC')
+    options = {:page=>1}
+    options.merge! hash
+    limit = 10
+    offset = (options[:page] - 1) * limit
+    joins(:tag).where(:tags=>{:name=>tag.name}).limit(limit).offset(offset).order('date DESC')
   end
   
   private

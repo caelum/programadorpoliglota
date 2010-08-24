@@ -86,12 +86,15 @@ describe Tweet do
     
     it 'should return the tweets paginated' do
       java_tag = Tag.create :name=> '#java'
-      newer_tweet = Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
-      older_tweet = Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now - 1.day
       
-      found = Tweet.last_tweets_for(java_tag, :offset=>1)
-      found[0].should == newer_tweet
-      found.size == 1
+      15.times do 
+        Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
+      end
+      
+      found = Tweet.last_tweets_for(java_tag, :page=>2)
+
+      found[0].tag.name.should == java_tag.name
+      found.size.should == 5
     end
   end
 end
