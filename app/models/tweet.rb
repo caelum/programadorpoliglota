@@ -27,7 +27,7 @@ class Tweet < ActiveRecord::Base
     twitter_query
   end
   
-  def self.create_new_tweets_from_query(twitter_query, tag)    
+  def self.create_new_tweets_from_query(twitter_query, tag)
     twitter_query.each do |tweet|
       new_tweet = Tweet.create :user=> tweet.from_user, :text=>tweet.text, :date=>tweet.created_at, :image_url=>tweet.profile_image_url, :tag=> tag, :tweet_id=>tweet.id
       tag.tweets << new_tweet

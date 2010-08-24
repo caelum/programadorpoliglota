@@ -1,0 +1,11 @@
+<div>
+	<ul>
+	<% @tweets.each do |t| %>					
+		<li>
+			<a href="http://www.twitter.com/<%=t.user%>"><img src='<%=t.image_url %>' width='48' height='48'/></a> || <a href="http://www.twitter.com/<%=t.user%>"><%= t.user %></a> -- <%= t.text %><br />
+			<small>twittado em <%= t.date.strftime('%d/%m/%Y %H:%M') %></small>
+		</li>
+	<% end %>
+	</ul>
+	<%= next_page_link(@page, @tag) %>
+</div>

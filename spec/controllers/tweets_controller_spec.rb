@@ -28,13 +28,27 @@ describe TweetsController do
       links_found = assigns(:links)
       links_found['#java'].should eq(links)
     end
-    
+  end
+  describe "#see_more" do
     it "should use the given page number for pagination" do
+      tweets = [Tweet.new, Tweet.new]
       tag = Tag.new(:name=>'#java')
-      Tag.should_receive(:all).and_return([tag])
-      Tweet.should_receive(:last_tweets_for).with(tag, :page=>2)
       
-      get :index, :page=>2
+      Tag.should_receive(:find).with(1).and_return(tag)
+      Tweet.should_receive(:last_tweets_for).with(tag, :page=>2).and_return(tweets)
+      
+      get :see_more, :page=>'2', :tag=>'1'
+    end
+    
+    it "should make available the number of the next page with the current page + 1" do
+      tweets = [Tweet.new, Tweet.new]
+      tag = Tag.new(:name=>'#java')
+      
+      Tag.should_receive(:find).with(1).and_return(tag)
+      Tweet.should_receive(:last_tweets_for).with(tag, :page=>2).and_return(tweets)
+      
+      get :see_more, :page=>'2', :tag=>'1'
+      assigns(:page).should == 3
     end
   end
 end

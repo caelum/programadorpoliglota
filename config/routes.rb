@@ -11,8 +11,11 @@ Programadorpoliglota::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
+  
+#  match 'tweets/:tag/:page' => 'tweets#index', :as => :tweets
   resources :tweets
-
+  
+  match 'tweets/see_more/:tag/:page' => 'tweets#see_more', :as=>:see_more
   # Sample resource route with options:
   #   resources :products do
   #     member do
