@@ -4,8 +4,11 @@ describe Link do
   describe "#extract_from" do
     it "should extract all links for a given tweet" do
       tag_java = Tag.new :name=>"#java"
-      tweet = Tweet.new :text=>"Esse eh um teste com http://www.caelum.com.br e http://blog.caelum.com.br #java"
+      tweet = Tweet.new :text=>"Esse eh um teste com http://bit.ly/aanv6P e http://bit.ly/aanv7P #java"
       tweet.tag = tag_java
+      
+      LinkRecover.should_receive(:decode).with('http://bit.ly/aanv6P').and_return('http://www.caelum.com.br')
+      LinkRecover.should_receive(:decode).with('http://bit.ly/aanv7P').and_return('http://blog.caelum.com.br')
       
       Link.should_receive(:create).with(:url=>'http://www.caelum.com.br', :tag=>tag_java, :quantity => 1).and_return(Link.new)
       Link.should_receive(:create).with(:url=>'http://blog.caelum.com.br', :tag=>tag_java, :quantity => 1).and_return(Link.new)
@@ -17,11 +20,13 @@ describe Link do
     
     it "should update the quantity if the link already exists" do
       tag_java = Tag.new :name=>"#java"
-      tweet = Tweet.new :text=>"Esse eh um teste com http://www.caelum.com.br #java"
+      tweet = Tweet.new :text=>"Esse eh um teste com http://bit.ly/aanv6P #java"
       tweet.tag = tag_java
       
       link = Link.new :quantity => 1, :url => "http://www.caelum.com.br"
       link.should_receive(:save)
+      
+      LinkRecover.should_receive(:decode).with('http://bit.ly/aanv6P').and_return(link.url)
       Link.should_receive(:find_by_tag_id_and_url).and_return(link)
 
       Link.create_from tweet
