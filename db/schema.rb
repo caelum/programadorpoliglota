@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20100820173402) do
     t.string   "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "links_extracted"
   end
 
 end

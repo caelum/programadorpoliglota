@@ -40,7 +40,7 @@ describe TweetsController do
       get :see_more, :page=>'2', :tag=>'1'
     end
     
-    it "should make available the number of the next page with the current page + 1" do
+    it "should make available the number of the current page" do
       tweets = [Tweet.new, Tweet.new]
       tag = Tag.new(:name=>'#java')
       
@@ -48,7 +48,31 @@ describe TweetsController do
       Tweet.should_receive(:last_tweets_for).with(tag, :page=>2).and_return(tweets)
       
       get :see_more, :page=>'2', :tag=>'1'
-      assigns(:page).should == 3
+      assigns(:page).should == 2
+    end
+    
+    it "should make available that there are no other pages to see" do
+      tweets = [Tweet.new, Tweet.new]
+      tag = Tag.new(:name=>'#java')
+
+      Tag.should_receive(:find).with(1).and_return(tag)
+      Tweet.should_receive(:last_tweets_for).with(tag, :page=>2).and_return(tweets)
+      Tweet.should_receive(:amount_of_tweets_for).with(tag).and_return(17)
+      
+      get :see_more, :page=>'2', :tag=>'1'
+      assigns(:has_more_pages).should == false
+    end
+    
+    it "should make available that there are other pages to see" do
+      tweets = [Tweet.new, Tweet.new]
+      tag = Tag.new(:name=>'#java')
+
+      Tag.should_receive(:find).with(1).and_return(tag)
+      Tweet.should_receive(:last_tweets_for).with(tag, :page=>2).and_return(tweets)
+      Tweet.should_receive(:amount_of_tweets_for).with(tag).and_return(25)
+      
+      get :see_more, :page=>'2', :tag=>'1'
+      assigns(:has_more_pages).should == true
     end
   end
 end

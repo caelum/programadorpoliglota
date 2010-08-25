@@ -42,10 +42,6 @@ describe Tweet do
       tweet = mock_model(Tweet)
       tweet.should_receive(:tweet_id).and_return(10)
       
-      #query = Object.new 
-      #Tweet.should_receive(:where).with(:tag_id=>tag.id).and_return(query)
-      #query.should_receive(:order).with('date').and_return(query)
-      #query.should_receive(:last).and_return(tweet)
       Tweet.stub_chain(:where, :order, :last).and_return(tweet)
       
       tweets = Hashie::Mash.new
@@ -96,6 +92,19 @@ describe Tweet do
 
       found[0].tag.name.should == java_tag.name
       found.size.should == 5
+    end
+  end
+  
+  describe "#amount_of_tweets_for" do
+    it "should return 15 when 15 tweets are created for a given tag" do
+      java_tag = Tag.create :name=> '#java'
+      15.times do 
+        Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
+      end
+      
+      amount = Tweet.amount_of_tweets_for(java_tag)
+      
+      amount.should == 15
     end
   end
 end

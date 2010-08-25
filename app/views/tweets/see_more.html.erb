@@ -7,7 +7,9 @@
 		</li>
 	<% end %>
 	</ul>
-	<%= next_page_link(@page, @tag) %>
+	<%if @has_more_pages%>
+		<%= next_page_link(@page, @tag) %>
+	<% end %>
 	<% if @page > 2 %>
 		 || <%= previous_page_link(@page, @tag) %>
 	<% end%>

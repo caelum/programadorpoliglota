@@ -1,5 +1,6 @@
 class Tweet < ActiveRecord::Base
   belongs_to :tag
+  TWEETS_PER_PAGE = 10
 
   def self.add_new_tweets
     tags = Tag.all
@@ -12,9 +13,12 @@ class Tweet < ActiveRecord::Base
   def self.last_tweets_for(tag, hash={})
     options = {:page=>1}
     options.merge! hash
-    limit = 10
-    offset = (options[:page] - 1) * limit
-    joins(:tag).where(:tags=>{:name=>tag.name}).limit(limit).offset(offset).order('date DESC')
+    offset = (options[:page] - 1) * TWEETS_PER_PAGE
+    joins(:tag).where(:tags=>{:name=>tag.name}).limit(TWEETS_PER_PAGE).offset(offset).order('date DESC')
+  end
+  
+  def self.amount_of_tweets_for(tag)
+    where(:tag_id=>tag.id).size
   end
   
   private
