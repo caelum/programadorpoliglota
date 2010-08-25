@@ -33,6 +33,5 @@ class Tweet < ActiveRecord::Base
       tag.tweets << new_tweet
       Link.create_from(new_tweet)
     end
-  end
-  
+  end  
 end
