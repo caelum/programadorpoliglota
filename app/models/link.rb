@@ -4,13 +4,14 @@ class Link < ActiveRecord::Base
   def self.create_from (tweet)
     urls = tweet.text.scan(/http:\/\/[^\s]+/)
     urls.each do |url|
-      full_url = full_url_for url
+      extractor = URLInformationExtractor.new url
+      full_url = extractor.unwrap
       link_found = Link.find_by_tag_id_and_url(tweet.tag.id, full_url)
       if link_found 
         link_found.quantity += 1
         link_found.save
       else
-        link = Link.create :url=>full_url, :tag=>tweet.tag, :quantity => 1
+        link = Link.create :url=>full_url, :tag=>tweet.tag, :quantity => 1, :title=>extractor.title
         tweet.tag.links << link
       end
     end
@@ -20,8 +21,4 @@ class Link < ActiveRecord::Base
       where(:tag_id=>tag.id).limit(5).order('quantity DESC, updated_at DESC')
   end
   
-  private
-  def self.full_url_for(tinyurl)
-    LinkRecover.decode tinyurl
-  end
 end

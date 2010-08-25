@@ -7,10 +7,9 @@ gem 'rails', '3.0.0.rc'
 
 
 gem 'mysql'
-
 gem 'twitter'
-
 gem 'whenever'
+gem 'mechanize'
 
 # Use unicorn as the web server
 # gem 'unicorn'

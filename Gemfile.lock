@@ -53,6 +53,8 @@ GEM
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
+    mechanize (1.0.0)
+      nokogiri (>= 1.2.1)
     mime-types (1.16)
     mysql (2.8.1)
     nokogiri (1.4.3.1)
@@ -115,6 +117,7 @@ DEPENDENCIES
   ZenTest
   autotest
   autotest-rails
+  mechanize
   mysql
   rails (= 3.0.0.rc)
   rspec-rails (>= 2.0.0.beta.19)
