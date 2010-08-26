@@ -1,5 +1,6 @@
 class Tweet < ActiveRecord::Base
   belongs_to :tag
+  belongs_to :user
   TWEETS_PER_PAGE = 10
 
   def self.add_new_tweets
@@ -33,7 +34,9 @@ class Tweet < ActiveRecord::Base
   
   def self.create_new_tweets_from_query(twitter_query, tag)
     twitter_query.each do |tweet|
-      new_tweet = Tweet.create :user=> tweet.from_user, :text=>tweet.text, :date=>tweet.created_at, :image_url=>tweet.profile_image_url, :tag=> tag, :tweet_id=>tweet.id
+      user = User.create_user_if_not_exists tweet
+      
+      new_tweet = Tweet.create :user=> user, :text=>tweet.text, :date=>tweet.created_at, :tag=> tag, :tweet_id=>tweet.id
       tag.tweets << new_tweet
       Link.create_from(new_tweet)
     end
