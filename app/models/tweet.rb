@@ -38,6 +38,7 @@ class Tweet < ActiveRecord::Base
       
       new_tweet = Tweet.create :user=> user, :text=>tweet.text, :date=>tweet.created_at, :tag=> tag, :tweet_id=>tweet.id
       tag.tweets << new_tweet
+   
       Link.create_from(new_tweet)
     end
   end  

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100826194728) do
+ActiveRecord::Schema.define(:version => 20100827173657) do
 
   create_table "links", :force => true do |t|
     t.string   "url"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20100826194728) do
     t.integer  "tag_id"
     t.integer  "quantity"
     t.string   "title"
+  end
+
+  create_table "retweeted_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "tag_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", :force => true do |t|
@@ -42,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20100826194728) do
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "retweets"
   end
 
 end
