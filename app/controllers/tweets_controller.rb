@@ -4,6 +4,7 @@ class TweetsController < ApplicationController
     @tags = Tag.all
     @tweets = {}
     @links = {}    
+    @retweets = {}
     load_tweets_and_links_for @tags, page
   end
   
@@ -26,11 +27,12 @@ class TweetsController < ApplicationController
   def load_tweets_and_links_for(tags, page)
     tags.each do |tag|
       @tweets[tag.name] = retrieve_tweets_for tag, page
+      #@retweets[tag.name] = RetweetedUser.where(:tag_id => tag.id).order('amount DESC')
       @links[tag.name] = Link.most_popular_for tag
     end
   end  
   
-  def retrieve_tweets_for tag, page
+  def retrieve_tweets_for(tag, page)
     Tweet.last_tweets_for tag, :page=> page
-  end
+  end  
 end

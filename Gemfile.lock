@@ -92,6 +92,9 @@ GEM
       webrat (>= 0.7.2.beta.1)
     rubyforge (2.0.4)
       json_pure (>= 1.1.7)
+    simplecov (0.3.3)
+      simplecov-html (>= 0.3.7)
+    simplecov-html (0.3.8)
     test_notifier (0.2.0)
     thor (0.14.0)
     treetop (1.4.8)
@@ -121,6 +124,7 @@ DEPENDENCIES
   mysql
   rails (= 3.0.0.rc)
   rspec-rails (>= 2.0.0.beta.19)
+  simplecov (>= 0.3.2)
   test_notifier
   twitter
   whenever

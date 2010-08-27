@@ -9,8 +9,12 @@ class URLInformationExtractor
   end
   
   def title
-    agent = Mechanize.new
-    agent.user_agent_alias = 'Mac Safari'
-    agent.get(@url).title
+    begin
+      agent = Mechanize.new
+      agent.user_agent_alias = 'Mac Safari'
+      agent.get(@url).title
+    rescue Mechanize::ResponseCodeError
+      @url
+    end
   end
 end
