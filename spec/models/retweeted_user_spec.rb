@@ -42,5 +42,18 @@ describe RetweetedUser do
       rt_user.user.twitter_id.should == user.twitter_id
       rt_user.amount.should == 6
     end
+    
+    it 'should increase the amount of a retweeted user when a user is found for the tweet tag' do
+      user = User.create :twitter_id=>'adrianoalmeida7'
+      java_tag = Tag.create :name=>'#java'
+      ruby_tag = Tag.create :name=>'#ruby'
+      RetweetedUser.create :user=>user, :tag=>java_tag, :amount=>5
+      tweet = Tweet.new :text=>'RT @adrianoalmeida7: a tweet', :tag=>ruby_tag
+      
+      RetweetedUser.extract_retweets_from tweet
+      
+      rt_user = RetweetedUser.find_by_user_id_and_tag_id(user.id, ruby_tag.id)
+      rt_user.amount.should == 1
+    end
   end
 end
