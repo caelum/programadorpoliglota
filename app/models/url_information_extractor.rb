@@ -4,8 +4,12 @@ class URLInformationExtractor
   end
   
   def unwrap
-    location = Net::HTTP.get_response(URI.parse(@url)).to_hash['location']
-    location == nil ? @url : location[0]
+    begin
+      location = Net::HTTP.get_response(URI.parse(@url)).to_hash['location']
+      location == nil ? @url : location[0]
+    rescue
+      @url
+    end
   end
   
   def title

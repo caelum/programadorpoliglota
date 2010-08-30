@@ -6,13 +6,15 @@ describe RetweetedUser do
       found = RetweetedUser.scan_for_retweeteds 'RT @adrianoalmeida7: this is a RT'
       
       found.size.should == 1
-      found[0][0].should == 'adrianoalmeida7'
+      found[0].should == 'adrianoalmeida7'
     end
     
     it 'should find the two retweeted users when there are two RT on the message' do
       found = RetweetedUser.scan_for_retweeteds 'RT @adrianoalmeida7: RT @lucasas: this is double a RT'
       
       found.size.should == 2
+      found[0].should == 'adrianoalmeida7'
+      found[1].should == 'lucasas'
     end
   end
   
@@ -54,6 +56,24 @@ describe RetweetedUser do
       
       rt_user = RetweetedUser.find_by_user_id_and_tag_id(user.id, ruby_tag.id)
       rt_user.amount.should == 1
+    end
+  end
+  
+  describe '#most_retweeted_for' do
+    it 'should return the 10 most retweeted for the given tag' do
+      tag = Tag.create :name=>'#ruby'
+      15.times do
+        user = User.create :twitter_id=>'Baba'
+        RetweetedUser.create :tag=>tag, :user=>user, :amount=>10
+      end 
+      user = RetweetedUser.first
+      user.amount = 50
+      user.save
+
+      result = RetweetedUser.most_retweeted_for(tag)
+      
+      result[0].amount.should == 50
+      result.size.should == 10
     end
   end
 end

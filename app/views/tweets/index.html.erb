@@ -13,6 +13,12 @@
 				</ul>
 				<%= next_page_link(2, tag)%>
 			</div>
+			Retuitados:
+			<% @retweeted_users[tag.name].each do |r| %>
+				<a href='http://www.twitter.com/<%=r.user.twitter_id%>'>
+					<img src='<%=r.user.image_url%>' width='48' height='48' />
+				</a>
+			<% end %>
 			Links: 
 			<ul>
 			<% @links[tag.name].each do |l| %>					

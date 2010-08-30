@@ -28,6 +28,21 @@ describe TweetsController do
       links_found = assigns(:links)
       links_found['#java'].should eq(links)
     end
+    
+    it 'should retrieve most retweeted for #java Tag' do
+      java_tag = Tag.new :name=>'#java'
+      tags = [java_tag]
+      users = [RetweetedUser.new, RetweetedUser.new]
+      
+      Tag.should_receive(:all).and_return(tags)
+      Tweet.should_receive(:last_tweets_for) 
+      Link.should_receive(:most_popular_for)
+      RetweetedUser.should_receive(:most_retweeted_for).with(java_tag).and_return(users)
+      
+      get :index
+      users_found = assigns(:retweeted_users)
+      users_found['#java'].should eq(users)
+    end
   end
   describe "#see_more" do
     it "should use the given page number for pagination" do
