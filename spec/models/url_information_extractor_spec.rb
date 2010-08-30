@@ -13,6 +13,21 @@ describe URLInformationExtractor do
       extractor = URLInformationExtractor.new 'http://www.example.com'
       extractor.title.should == 'A title'
     end
+    
+    it "should return the given url when an error is raised when retrieving the title" do
+      url = 'http://www.example.com'
+      agent = Object.new
+      site_information = Object.new
+      Mechanize.should_receive(:new).and_return(agent)
+      agent.should_receive(:user_agent_alias=).with('Mac Safari')
+      page = mock(Mechanize::Page)
+      page.should_receive(:code).and_return(404)
+      
+      agent.should_receive(:get).once.with(url).and_raise(Mechanize::ResponseCodeError.new(page))
+      
+      extractor = URLInformationExtractor.new(url)
+      extractor.title.should == url
+    end
   end
   
   describe '#unwrap' do
