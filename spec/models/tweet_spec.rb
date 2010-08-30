@@ -19,6 +19,8 @@ describe Tweet do
       query.should_receive(:order).with('date').and_return(query)
       query.should_receive(:last).and_return(nil)
       
+      RetweetedUser.should_receive(:extract_retweets_from)
+      
       tweets = Hashie::Mash.new
       
       twitter_query = Object.new
@@ -43,6 +45,7 @@ describe Tweet do
       tweet.should_receive(:tweet_id).and_return(10)
       
       Tweet.stub_chain(:where, :order, :last).and_return(tweet)
+      RetweetedUser.should_receive(:extract_retweets_from)
       
       tweets = Hashie::Mash.new
       
