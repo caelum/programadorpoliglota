@@ -15,7 +15,7 @@ class Tweet < ActiveRecord::Base
     options = {:page=>1}
     options.merge! hash
     offset = (options[:page] - 1) * TWEETS_PER_PAGE
-    joins(:tag).where(:tags=>{:name=>tag.name}).limit(TWEETS_PER_PAGE).offset(offset).order('date DESC')
+    joins(:tag).where(:tags=>{:name=>tag.name}).includes(:user).limit(TWEETS_PER_PAGE).offset(offset).order('date DESC')
   end
   
   def self.amount_of_tweets_for(tag)
