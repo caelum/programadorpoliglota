@@ -12,8 +12,7 @@ Programadorpoliglota::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   
-#  match 'tweets/:tag/:page' => 'tweets#index', :as => :tweets
-  resources :tweets
+  match 'tweets' => 'tweets#index', :as => :tweets
   
   match 'tweets/see_more/:tag/:page' => 'tweets#see_more', :as=>:see_more
   # Sample resource route with options:
@@ -51,7 +50,7 @@ Programadorpoliglota::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "tweets#index"
 
   # See how all your routes lay out with "rake routes"
 
