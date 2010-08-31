@@ -6,7 +6,10 @@
 				<ul>
 				<% @tweets[tag.name].each do |t| %>					
 					<li>
-						<a href="http://www.twitter.com/<%=t.user.twitter_id%>"><img src='<%=t.user.image_url %>' width='48' height='48'/></a> || <a href="http://www.twitter.com/<%=t.user.twitter_id%>"><%= t.user.twitter_id %></a> -- <%= t.text %><br />
+						<a href="http://www.twitter.com/<%=t.user.twitter_id%>">
+							<img src='<%= image_url_of(t.user) %>' width='48' height='48'/></a> || 
+							<a href="http://www.twitter.com/<%=t.user.twitter_id%>"><%= t.user.twitter_id %></a> 
+							-- <%= t.text %><br />
 						<small>twittado em <%= t.date.strftime('%d/%m/%Y %H:%M') %></small>
 					</li>
 				<% end %>
@@ -16,7 +19,7 @@
 			Retuitados:
 			<% @retweeted_users[tag.name].each do |r| %>
 				<a href='http://www.twitter.com/<%=r.user.twitter_id%>'>
-					<img src='<%=r.user.image_url%>' width='48' height='48' />
+					<img src='<%= image_url_of(r.user) %>' width='48' height='48' />
 				</a>
 			<% end %>
 			Links: 
