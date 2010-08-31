@@ -1,0 +1,7 @@
+<li>
+	<a href="http://www.twitter.com/<%=tweet.user.twitter_id%>">
+		<img src='<%= image_url_of(tweet.user) %>' width='48' height='48'/></a> || 
+		<a href="http://www.twitter.com/<%=tweet.user.twitter_id%>"><%= tweet.user.twitter_id %></a> 
+		-- <%= tweet.text %><br />
+	<small>twittado em <%= tweet.date.strftime('%d/%m/%Y %H:%M') %></small>
+</li>
