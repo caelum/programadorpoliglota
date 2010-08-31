@@ -1,45 +1,47 @@
-		<% @tags.each do |tag| %>
-			Tag: <%= tag.name %> <br />
+<a href='http://twitter.com/?status=@progpoliglota' target='_blank'>Sugira sua comunidade</a><br />
 
-			Tweets: 
-			<div>
-				<ul>
-				<% @tweets[tag.name].each do |t| %>					
-					<%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
-				<% end %>
-				</ul>
-				<%= next_page_link(2, tag)%>
-			</div>
-			Retuitados:
-			<% @retweeted_users[tag.name].each do |r| %>
-				<a href='http://www.twitter.com/<%=r.user.twitter_id%>'>
-					<img src='<%= image_url_of(r.user) %>' width='48' height='48' />
-				</a>
-			<% end %>
-			Links: 
-			<ul>
-			<% @links[tag.name].each do |l| %>					
-				<li>
-					<%= l.quantity %> -- <%= l.title%> <a href="<%= l.url %>"><%= l.url %></a>
-				</li>
-			<% end%>
-			</ul>
-			<hr />
+<% @tags.each do |tag| %>
+	Tag: <%= tag.name %> <br />
+
+	Tweets: 
+	<div>
+		<ul>
+		<% @tweets[tag.name].each do |t| %>					
+			<%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
 		<% end %>
-		<script type="text/javascript">
-			$(function() {
+		</ul>
+		<%= next_page_link(2, tag)%>
+	</div>
+	Retuitados:
+	<% @retweeted_users[tag.name].each do |r| %>
+		<a href='http://www.twitter.com/<%=r.user.twitter_id%>'>
+			<img src='<%= image_url_of(r.user) %>' width='48' height='48' />
+		</a>
+	<% end %>
+	Links: 
+	<ul>
+	<% @links[tag.name].each do |l| %>					
+		<li>
+			<%= l.quantity %> -- <%= l.title%> <a href="<%= l.url %>"><%= l.url %></a>
+		</li>
+	<% end%>
+	</ul>
+	<hr />
+<% end %>
+<script type="text/javascript">
+	$(function() {
+		registerEvent();
+	});
+	
+	function registerEvent() {
+		$(".ver_mais").click(function() {
+			elemento = $(this);
+			url = $(this).attr('href');
+			$.get(url, function(data) {
+				elemento.parent().replaceWith(data);
 				registerEvent();
 			});
-			
-			function registerEvent() {
-				$(".ver_mais").click(function() {
-					elemento = $(this);
-					url = $(this).attr('href');
-					$.get(url, function(data) {
-						elemento.parent().replaceWith(data);
-						registerEvent();
-					});
-					return false;
-				});
-			}
-		</script>
+			return false;
+		});
+	}
+</script>
