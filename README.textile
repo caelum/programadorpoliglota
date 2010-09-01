@@ -4,7 +4,7 @@ O projeto programador poliglota é um movimento para agregar as diversas comunid
 
 h1. Contribuindo
 
-Para contribuir com o programador poliglota com funcionalidades, patches ou qualquer outra ideia genial que você tenha, faça um fork do projeto, crie sua funcionalidade (não se escreva de escrever os testes) e submeta um pull request para nós.
+Para contribuir com o programador poliglota com funcionalidades, patches ou qualquer outra ideia genial que você tenha, faça um fork do projeto, crie sua funcionalidade (não se esqueça de escrever os testes) e submeta um pull request para nós.
 
 h1. Licença
 
