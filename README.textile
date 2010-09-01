@@ -1,0 +1,11 @@
+h1. Programador Poliglota
+
+O projeto programador poliglota é um movimento para agregar as diversas comunidades de desenvolvimento e alavancar a ideia de que atualmente os programadores não devem se prender a apenas uma linguagem. Ao invés disso, o ideal é que se conheça diferentes linguagens e paradigmas para que seja possível escolher a melhor ferramenta para a solução de determinado problema.
+
+h1. Contribuindo
+
+Para contribuir com o programador poliglota com funcionalidades, patches ou qualquer outra ideia genial que você tenha, faça um fork do projeto, crie sua funcionalidade (não se escreva de escrever os testes) e submeta um pull request para nós.
+
+h1. Licença
+
+Programdor Poliglota é distribuído sob a licença MIT e uma cópia da mesma pode ser encontrada dentro do arquivo LICENSE. 
