@@ -35,5 +35,11 @@ group :development, :test do
 	gem 'autotest-rails'
 	gem 'autotest'
 	gem 'rspec-rails', '>= 2.0.0.beta.19'
-end
 
+	gem 'capybara'
+    gem 'database_cleaner'
+    gem 'cucumber-rails'
+    gem 'cucumber'
+    gem 'spork'
+    gem 'launchy'    # So you can do Then show me the page
+end
