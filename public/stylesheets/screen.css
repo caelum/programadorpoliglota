@@ -1,0 +1,818 @@
+/* css reset*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dd,
+dl,
+dt,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 100%;
+  line-height: 1;
+  font-family: inherit;
+  text-align: left;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+ol, ul {
+  list-style: none;
+}
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+a img, :link img, :visited img {
+  border: none;
+}
+/*end css reset*/
+/*colorscheme*/
+/*colorscheme*/
+.blockR {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.blockA {
+  display: block;
+  position: absolute;
+  oveflow: hidden;
+}
+body {
+  background: #646464 url('img/bgSite.png');
+  font-family: 'Inconsolata', Arial, Sans-Serif;
+}
+#headerWrap {
+  background: #1e1e1e url('img/csg-4c80248723095.png') repeat-x 0 0;
+  width: 100%;
+  height: 103px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+#headerWrap a#twitterPageTurn {
+  background: url('img/csg-4c80248723095.png') no-repeat 0px -916px;
+  width: 132px;
+  height: 103px;
+  display: block;
+  position: absolute;
+  oveflow: hidden;
+  top: 0px;
+  left: 0px;
+  z-index: 800;
+}
+#headerWrap a#twitterPageTurn:hover {
+  background-position: 0 -1039px;
+}
+#headerWrap a#twitterPageTurn span {
+  display: none;
+}
+#headerWrap #headerPP {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0px auto;
+  z-index: 700;
+  height: auto;
+}
+#headerWrap #headerPP h1#logoPP {
+  background: url('img/csg-4c80248723095.png') no-repeat 0 -793px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: 313px;
+  height: 103px;
+}
+#headerWrap #headerPP h1#logoPP a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: url('img/csg-4c810f0a3c172.png') no-repeat top left;
+  width: 275px;
+  height: 76px;
+  text-decoration: none;
+  cursos: pointer;
+  margin-left: 25px;
+  margin-top: 5px;
+}
+#headerWrap #headerPP h1#logoPP a:hover {
+  background-position: 0 -96px;
+  width: 275px;
+  height: 76px;
+}
+#headerWrap #headerPP h1#logoPP a span {
+  display: none;
+}
+#headerWrap #headerPP #menu {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: right;
+  margin-top: 12px;
+}
+#headerWrap #headerPP #menu li {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  float: left;
+  margin-right: 20px;
+}
+#headerWrap #headerPP #menu li a {
+  background: url('img/csg-4c80248723095.png') no-repeat;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  float: left;
+  cursor: pointer;
+}
+#headerWrap #headerPP #menu li a:hover {
+  background-color: #ffffff;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  -webikit-border-top-left-radius: 4px;
+  -webikit-border-top-right-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-topright: 4px;
+}
+#headerWrap #headerPP #menu li a span {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  padding: 1px;
+  font-size: 16px;
+  z-index: 600;
+}
+#headerWrap #headerPP #menu li a#menuHomePP {
+  background-position: 8px -355px;
+  padding: 15px 10px 15px 60px;
+  color: #ffffff;
+  /*width: 46px; height: 48px;*/
+}
+#headerWrap #headerPP #menu li a#menuHomePP:hover {
+  background-position: 8px -423px;
+  color: #1e1e1e;
+}
+#headerWrap #headerPP #menu li a#menuApoiePP {
+  background-position: 5px -166px;
+  padding: 15px 10px 15px 60px;
+  color: #ffffff;
+  /*width: 48px; height: 48px;*/
+}
+#headerWrap #headerPP #menu li a#menuApoiePP:hover {
+  background-position: 5px -234px;
+  color: #1e1e1e;
+}
+#headerWrap #headerPP #menu li a#menuSobrePP {
+  background-position: 10px -543px;
+  padding: 15px 10px 15px 60px;
+  color: #ffffff;
+  /*width: 44px; height: 48px;*/
+}
+#headerWrap #headerPP #menu li a#menuSobrePP:hover {
+  background-position: 10px -611px;
+  color: #1e1e1e;
+}
+#contentWrap {
+  background: #ffffff;
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+#contentWrap #contentPP {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0px auto;
+  padding: 0px;
+  height: auto;
+  /*Structural Scheme*/
+
+  /*Color Scheme*/
+
+}
+#contentWrap #contentPP .moreLangOptions {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  margin-bottom: 10px;
+  background: #646464;
+  clear: both;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 4px;
+  -webikit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+#contentWrap #contentPP .moreLangOptions:hover {
+  background: #1e1e1e;
+}
+#contentWrap #contentPP .moreLangOptions span {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  margin: 20px auto;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang01,
+#contentWrap #contentPP .lang02,
+#contentWrap #contentPP .lang03,
+#contentWrap #contentPP .lang04,
+#contentWrap #contentPP .lang05,
+#contentWrap #contentPP .lang06 {
+  display: block;
+  position: relative;
+}
+#contentWrap #contentPP .headerLang {
+  display: block;
+  position: absolute;
+  oveflow: hidden;
+  width: auto;
+  height: auto;
+  background: #ffffff;
+  padding: 0px 5px 5px 5px;
+  margin: 0px;
+  left: 10px;
+  top: 0px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #505050;
+  z-index: 600;
+}
+#contentWrap #contentPP .shapeLang {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+  padding-top: 20px;
+  z-index: 500;
+  border-radius: 4px;
+  -webikit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+#contentWrap #contentPP .shapeLang .newsLang {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 95%;
+  height: auto;
+  clear: both;
+  margin: 0px auto;
+}
+#contentWrap #contentPP .shapeLang .newsLang li {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  font-size: 11px;
+  padding: 0px 0px 5px 0px;
+  margin: 0px 0px 5px 0px;
+  border-bottom: 1px solid #000068;
+}
+#contentWrap #contentPP .shapeLang .newsLang li img {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: auto;
+  height: auto;
+}
+#contentWrap #contentPP .shapeLang .newsLang li p {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: 74%;
+  height: auto;
+  margin-left: 5px;
+  padding: 2px 0px;
+  line-height: 14px;
+}
+#contentWrap #contentPP .shapeLang .newsLang li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2e35cc;
+  padding: 0px;
+}
+#contentWrap #contentPP .shapeLang .newsLang li a:hover {
+  color: #646464;
+  text-decoration: underline;
+}
+#contentWrap #contentPP .shapeLang .btnMoreTweets {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  float: right;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 0px 5px 10px 0px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  -webikit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+#contentWrap #contentPP .shapeLang .linkLang {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+}
+#contentWrap #contentPP .shapeLang .linkLang h3 {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  float: left;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 10px 0px 10px 5px;
+}
+#contentWrap #contentPP .shapeLang .linkLang ul {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  float: left;
+}
+#contentWrap #contentPP .shapeLang .linkLang ul li {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 95%;
+  height: auto;
+  font-size: 11px;
+  padding-bottom: 5px;
+  margin: 0px auto 5px auto;
+}
+#contentWrap #contentPP .shapeLang .linkLang ul li a {
+  text-decoration: none;
+}
+#contentWrap #contentPP .shapeLang .linkLang .btnMore {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  float: right;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 0px 5px 10px 0px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  -webikit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+#contentWrap #contentPP .lang01 .shapeLang {
+  border: #ff6666 solid 2px;
+}
+#contentWrap #contentPP .lang01 .shapeLang .btnMoreTweets {
+  background-color: #646464;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang01 .shapeLang .btnMoreTweets:hover {
+  background-color: #1017ae;
+}
+#contentWrap #contentPP .lang01 .shapeLang .linkLang {
+  background-color: #ff6666;
+}
+#contentWrap #contentPP .lang01 .shapeLang .linkLang h3 {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang01 .shapeLang .linkLang li {
+  color: #ffffff;
+  border-bottom: 1px solid #9b0202;
+}
+#contentWrap #contentPP .lang01 .shapeLang .linkLang li a {
+  color: #9b0202;
+}
+#contentWrap #contentPP .lang01 .shapeLang .linkLang li a:hover {
+  color: #646464;
+}
+#contentWrap #contentPP .lang01 .shapeLang .linkLang .btnMore {
+  background: #b92020;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang01 .shapeLang .linkLang .btnMore:hover {
+  color: #b92020;
+  background: #ffffff;
+}
+#contentWrap #contentPP .lang02 .shapeLang {
+  border: #2e35cc solid 2px;
+}
+#contentWrap #contentPP .lang02 .shapeLang .btnMoreTweets {
+  background-color: #646464;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang02 .shapeLang .btnMoreTweets:hover {
+  background-color: #1017ae;
+}
+#contentWrap #contentPP .lang02 .shapeLang .linkLang {
+  background-color: #2e35cc;
+}
+#contentWrap #contentPP .lang02 .shapeLang .linkLang h3 {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang02 .shapeLang .linkLang li {
+  color: #ffffff;
+  border-bottom: 1px solid #000068;
+}
+#contentWrap #contentPP .lang02 .shapeLang .linkLang li a {
+  color: #8fd6fe;
+}
+#contentWrap #contentPP .lang02 .shapeLang .linkLang li a:hover {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang02 .shapeLang .linkLang .btnMore {
+  background: #000086;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang02 .shapeLang .linkLang .btnMore:hover {
+  color: #000086;
+  background: #ffffff;
+}
+#contentWrap #contentPP .lang03 .shapeLang {
+  border: #6699ff solid 2px;
+}
+#contentWrap #contentPP .lang03 .shapeLang .btnMoreTweets {
+  background-color: #646464;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang03 .shapeLang .btnMoreTweets:hover {
+  background-color: #1017ae;
+}
+#contentWrap #contentPP .lang03 .shapeLang .linkLang {
+  background-color: #6699ff;
+}
+#contentWrap #contentPP .lang03 .shapeLang .linkLang h3 {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang03 .shapeLang .linkLang li {
+  color: #ffffff;
+  border-bottom: 1px solid #02359b;
+}
+#contentWrap #contentPP .lang03 .shapeLang .linkLang li a {
+  color: #02359b;
+}
+#contentWrap #contentPP .lang03 .shapeLang .linkLang li a:hover {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang03 .shapeLang .linkLang .btnMore {
+  background: #2053b9;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang03 .shapeLang .linkLang .btnMore:hover {
+  color: #2053b9;
+  background: #ffffff;
+}
+#contentWrap #contentPP .lang04 .shapeLang {
+  border: #59597a solid 2px;
+}
+#contentWrap #contentPP .lang04 .shapeLang .btnMoreTweets {
+  background-color: #646464;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang04 .shapeLang .btnMoreTweets:hover {
+  background-color: #1017ae;
+}
+#contentWrap #contentPP .lang04 .shapeLang .linkLang {
+  background-color: #59597a;
+}
+#contentWrap #contentPP .lang04 .shapeLang .linkLang h3 {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang04 .shapeLang .linkLang li {
+  color: #ffffff;
+  border-bottom: 1px solid #000016;
+}
+#contentWrap #contentPP .lang04 .shapeLang .linkLang li a {
+  color: #000016;
+}
+#contentWrap #contentPP .lang04 .shapeLang .linkLang li a:hover {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang04 .shapeLang .linkLang .btnMore {
+  background: #131334;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang04 .shapeLang .linkLang .btnMore:hover {
+  color: #131334;
+  background: #ffffff;
+}
+#contentWrap #contentPP .lang05 .shapeLang {
+  border: #2f6f00 solid 2px;
+}
+#contentWrap #contentPP .lang05 .shapeLang .btnMoreTweets {
+  background-color: #646464;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang05 .shapeLang .btnMoreTweets:hover {
+  background-color: #1017ae;
+}
+#contentWrap #contentPP .lang05 .shapeLang .linkLang {
+  background-color: #2f6f00;
+}
+#contentWrap #contentPP .lang05 .shapeLang .linkLang h3 {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang05 .shapeLang .linkLang li {
+  color: #ffffff;
+  border-bottom: 1px solid #000b00;
+}
+#contentWrap #contentPP .lang05 .shapeLang .linkLang li a {
+  color: #000b00;
+}
+#contentWrap #contentPP .lang05 .shapeLang .linkLang li a:hover {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang05 .shapeLang .linkLang .btnMore {
+  background: #002900;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang05 .shapeLang .linkLang .btnMore:hover {
+  color: #002900;
+  background: #ffffff;
+}
+#contentWrap #contentPP .lang06 .shapeLang {
+  border: #398f41 solid 2px;
+}
+#contentWrap #contentPP .lang06 .shapeLang .btnMoreTweets {
+  background-color: #646464;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang06 .shapeLang .btnMoreTweets:hover {
+  background-color: #1017ae;
+}
+#contentWrap #contentPP .lang06 .shapeLang .linkLang {
+  background-color: #398f41;
+}
+#contentWrap #contentPP .lang06 .shapeLang .linkLang h3 {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang06 .shapeLang .linkLang li {
+  color: #ffffff;
+  border-bottom: 1px solid #002b00;
+}
+#contentWrap #contentPP .lang06 .shapeLang .linkLang li a {
+  color: #002b00;
+}
+#contentWrap #contentPP .lang06 .shapeLang .linkLang li a:hover {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang06 .shapeLang .linkLang .btnMore {
+  background: #004900;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang06 .shapeLang .linkLang .btnMore:hover {
+  color: #004900;
+  background: #ffffff;
+}
+#footerWrap {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+#footerWrap #footerPP {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  margin: 0 auto;
+}
+#footerWrap #footerPP #socialFooter {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: auto;
+  height: auto;
+  margin-top: 10px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+#footerWrap #footerPP #socialFooter p {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  float: left;
+  font-weight: 700;
+  color: #ffffff;
+}
+#footerWrap #footerPP #socialFooter p span {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  margin-top: 6px;
+  margin-right: 10px;
+}
+#footerWrap #footerPP #socialFooter p a {
+  background: url('img/csg-4c80248723095.png') repeat-x left top;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  margin-right: 10px;
+}
+#footerWrap #footerPP #socialFooter p a span {
+  display: none;
+}
+#footerWrap #footerPP #socialFooter p #facebookFooter {
+  background-position: 0 -689px;
+  width: 32px;
+  height: 32px;
+}
+#footerWrap #footerPP #socialFooter p #facebookFooter:hover {
+  background-position: 0 -741px;
+  width: 32px;
+  height: 32px;
+}
+#footerWrap #footerPP #socialFooter p #twitterFooter {
+  background-position: 0 -1162px;
+  width: 31px;
+  height: 32px;
+}
+#footerWrap #footerPP #socialFooter p #twitterFooter:hover {
+  background-position: 0 -1214px;
+  width: 31px;
+  height: 32px;
+}
+#footerWrap #footerPP #menuFooter {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: right;
+}
+#footerWrap #footerPP #menuFooter li {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  float: left;
+  margin-right: 20px;
+}
+#footerWrap #footerPP #menuFooter li a {
+  background: #ffffff url('img/csg-4c80248723095.png') no-repeat;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  float: left;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  -webikit-border-bottom-left-radius: 4px;
+  -webikit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-bottomright: 4px;
+  cursor: pointer;
+}
+#footerWrap #footerPP #menuFooter li a:hover {
+  color: blue;
+}
+#footerWrap #footerPP #menuFooter li a span {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  padding: 1px;
+  font-size: 11px;
+  font-weight: bold;
+  z-index: 600;
+}
+#footerWrap #footerPP #menuFooter li #menuFooterHomePP {
+  background-position: 3px -310px;
+  padding: 5px 10px 10px 40px;
+}
+#footerWrap #footerPP #menuFooter li #menuFooterSobrePP {
+  background-position: 3px -499px;
+  padding: 5px 10px 10px 40px;
+}
+#footerWrap #footerPP #menuFooter li #menuFooterApoiePP {
+  background-position: 3px -121px;
+  padding: 5px 10px 10px 40px;
+}
+/*grid less*/
+.size1 {
+  width: 960px;
+}
+.size1_null {
+  width: 944px;
+  margin-right: 20px;
+}
+.size2 {
+  width: 460px;
+  margin-right: 20px;
+}
+.size3 {
+  width: 300px;
+  margin-right: 20px;
+}
+.size4 {
+  width: 220px;
+  margin-right: 20px;
+}
+.last {
+  margin-right: 0;
+}
+.bSpace01 {
+  margin-bottom: 10px;
+}
+.fLeft {
+  float: left;
+}
+.fRight {
+  float: right;
+}
+/*grid less*/
