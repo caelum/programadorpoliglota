@@ -1,7 +1,7 @@
 class Tweet < ActiveRecord::Base
   belongs_to :tag
   belongs_to :user
-  TWEETS_PER_PAGE = 10
+  TWEETS_PER_PAGE = 4
 
   def self.add_new_tweets
     tags = Tag.all

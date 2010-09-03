@@ -1,10 +1,10 @@
 module TweetHelper
   def next_page_link(page, tag)
-    link_to 'Ver mais', see_more_url(:page=>page + 1, :tag=>tag), :class=>'ver_mais'
+    link_to 'Ver mais', see_more_url(:page=>page + 1, :tag=>tag), :class=>'ver_mais btnMoreTweets'
   end
   
   def previous_page_link(page, tag)
-    link_to 'Anteriores', see_more_url(:page=>page - 1, :tag=>tag), :class=>'ver_mais'
+    link_to 'Anteriores', see_more_url(:page=>page - 1, :tag=>tag), :class=>'ver_mais btnMoreTweets'
   end
   
   def image_url_of(user)
