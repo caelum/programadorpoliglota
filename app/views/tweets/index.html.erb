@@ -1,34 +1,29 @@
-<%= link_to 'Sugira sua comunidade', 'http://twitter.com/?status=@progpoliglota' %>
-<br />
-
-<% @tags.each do |tag| %>
-	Tag: <%= tag.name %> <br />
-
-	Tweets: 
-	<div>
-		<ul>
-		<% @tweets[tag.name].each do |t| %>					
-			<%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
-		<% end %>
-		</ul>
-		<%= next_page_link(2, tag)%>
-	</div>
-	Retuitados:
-	<% @retweeted_users[tag.name].each do |r| %>
-		<a href='http://www.twitter.com/<%=r.user.twitter_id%>'>
-			<img src='<%= image_url_of(r.user) %>' width='48' height='48' />
-		</a>
-	<% end %>
-	Links: 
-	<ul>
-	<% @links[tag.name].each do |l| %>					
-		<li>
-			<%= l.quantity %> -- <%= l.title%> <a href="<%= l.url %>"><%= l.url %></a>
-		</li>
-	<% end%>
-	</ul>
-	<hr />
-<% end %>
+<div id="contentPP" class="size1">
+  <% @tags.each do |tag| %>
+    <div class="size3 bSpace01 fLeft lang0<%=tag.id %>">
+      <h2 class="headerLang"><%=tag.name%></h2>
+      <div class="shapeLang"	
+		    <ul class="newsLang">
+		      <% @tweets[tag.name].each do |t| %>					
+			      <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
+		      <% end %>
+        </ul>
+        <%= next_page_link(2, tag.id) %>
+        <div class="linkLang">
+          <h3><%=tag.name %> links</h3>
+	        <ul>
+	          <% @links[tag.name].each do |l| %>					
+              <li style="min-height:45px;">
+			          <%= l.quantity %> -- <%= l.title%> <a href="<%= l.url %>"><%= l.url %></a>
+		          </li>
+	          <% end%>
+	        </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+	<a class="moreLangOptions size1_null" href="http://twitter.com/?status=@progpoliglota"><span>Alguma linguagem faltando? Solicite mais linguagens.</span></a>
+</div>
 <script type="text/javascript">
 	$(function() {
 		registerEvent();
