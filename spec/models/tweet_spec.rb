@@ -94,7 +94,7 @@ describe Tweet do
       found = Tweet.last_tweets_for(java_tag, :page=>2)
 
       found[0].tag.name.should == java_tag.name
-      found.size.should == 5
+      found.size.should == 4
     end
   end
   

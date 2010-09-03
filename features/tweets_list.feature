@@ -5,4 +5,4 @@ Feature: Tweets Listings
   
   Scenario: Show all the created tags
     Given I am on the root page
-    Then I should see a link called "Sugira sua comunidade" pointing to "http://twitter.com/?status=@progpoliglota"
+	Then I should see a link called "Alguma linguagem faltando? Solicite mais linguagens." pointing to "http://twitter.com/?status=@progpoliglota"

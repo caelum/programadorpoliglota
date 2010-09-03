@@ -72,7 +72,7 @@ describe TweetsController do
 
       Tag.should_receive(:find).with(1).and_return(tag)
       Tweet.should_receive(:last_tweets_for).with(tag, :page=>2).and_return(tweets)
-      Tweet.should_receive(:amount_of_tweets_for).with(tag).and_return(17)
+      Tweet.should_receive(:amount_of_tweets_for).with(tag).and_return(7)
       
       get :see_more, :page=>'2', :tag=>'1'
       assigns(:has_more_pages).should == false
