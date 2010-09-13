@@ -8,7 +8,7 @@
 			      <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
 		      <% end %>
         </ul>
-        <%= next_page_link(2, tag.id) %>
+        <%= next_page_link(1, tag.id) %>
         <div class="linkLang">
           <h3><%=tag.name %> links</h3>
 	        <ul>
@@ -33,8 +33,10 @@
 		$(".ver_mais").click(function() {
 			elemento = $(this);
 			url = $(this).attr('href');
-			$.get(url, function(data) {
-				elemento.parent().replaceWith(data);
+      $.get(url, function(data) {
+        div = elemento.parent();
+        div.find('.ver_mais').remove();
+				div.find('.newsLang').replaceWith(data);
 				registerEvent();
 			});
 			return false;
