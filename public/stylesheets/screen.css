@@ -189,6 +189,7 @@ body {
   height: auto;
   float: left;
   cursor: pointer;
+  text-decoration: none;
 }
 #headerWrap #headerPP #menu li a:hover {
   background-color: #ffffff;
@@ -761,6 +762,7 @@ body {
   -moz-border-radius-bottomleft: 4px;
   -moz-border-radius-bottomright: 4px;
   cursor: pointer;
+  text-decoration: none;
 }
 #footerWrap #footerPP #menuFooter li a:hover {
   color: blue;
@@ -788,6 +790,7 @@ body {
   background-position: 3px -121px;
   padding: 5px 10px 10px 40px;
 }
+
 /*grid less*/
 .size1 {
   width: 960px;

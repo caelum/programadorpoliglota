@@ -2,11 +2,11 @@
   <% @tags.each do |tag| %>
     <div class="size3 bSpace01 fLeft lang0<%=tag.id %>">
       <h2 class="headerLang"><%=tag.name%></h2>
-      <div class="shapeLang"	
-		    <ul class="newsLang">
-		      <% @tweets[tag.name].each do |t| %>					
-			      <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
-		      <% end %>
+      <div class="shapeLang">	
+		<ul class="newsLang">
+		   <% @tweets[tag.name].each do |t| %>					
+			   <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
+		   <% end %>
         </ul>
         <%= next_page_link(1, tag.id) %>
         <div class="linkLang">
@@ -22,7 +22,8 @@
 		<div class="retweetedPeopleLang">
 			<% @retweeted_users[tag.name].each do |ru| %>
 				<a target="blank" href="http://www.twitter.com/<%=ru.user.twitter_id%>">
-			    <img src='<%= image_url_of(ru.user) %>' style="width:48px; height:48px;">
+			    	<img src='<%= image_url_of(ru.user) %>' style="width:48px; height:48px;">
+				</a>
 			<% end %>
 		</div>
       </div>
