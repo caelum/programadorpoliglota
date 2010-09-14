@@ -17,6 +17,6 @@ class RetweetedUser < ActiveRecord::Base
   end
   
   def self.most_retweeted_for(tag)
-    where(:tag_id => tag.id).includes(:user).order('amount DESC').limit(10)
+    where(:tag_id => tag.id).includes(:user).order('amount DESC').limit(5)
   end
 end

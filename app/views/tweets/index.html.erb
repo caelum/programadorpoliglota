@@ -14,11 +14,17 @@
 	        <ul>
 	          <% @links[tag.name].each do |l| %>					
               <li style="min-height:45px;">
-			          <%= l.quantity %> -- <%= l.title%> <a href="<%= l.url %>"><%= l.url %></a>
+			          <%= l.quantity %> -- <%= l.title%> <a target="blank" href="<%= l.url %>"><%= l.url %></a>
 		          </li>
 	          <% end%>
 	        </ul>
         </div>
+		<div class="retweetedPeopleLang">
+			<% @retweeted_users[tag.name].each do |ru| %>
+				<a target="blank" href="http://www.twitter.com/<%=ru.user.twitter_id%>">
+			    <img src='<%= image_url_of(ru.user) %>' style="width:48px; height:48px;">
+			<% end %>
+		</div>
       </div>
     </div>
   <% end %>

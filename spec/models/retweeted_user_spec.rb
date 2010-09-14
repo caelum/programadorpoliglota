@@ -73,7 +73,7 @@ describe RetweetedUser do
       result = RetweetedUser.most_retweeted_for(tag)
       
       result[0].amount.should == 50
-      result.size.should == 10
+      result.size.should == 5
     end
   end
 end

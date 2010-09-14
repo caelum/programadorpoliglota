@@ -550,6 +550,11 @@ body {
   color: #2053b9;
   background: #ffffff;
 }
+
+#contentWrap #contentPP .retweetedPeopleLang {
+  padding: 4px;
+}
+
 #contentWrap #contentPP .lang04 .shapeLang {
   border: #59597a solid 2px;
 }
