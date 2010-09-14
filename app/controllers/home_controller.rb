@@ -1,4 +1,4 @@
-class TweetsController < ApplicationController
+class HomeController < ApplicationController
   def index
     page = 1
     @tags = Tag.all
@@ -16,7 +16,9 @@ class TweetsController < ApplicationController
     
     render :layout => false
   end
-  
+ 
+  def about
+  end
   private
   
   def has_more_pages(tag)

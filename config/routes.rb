@@ -12,10 +12,10 @@ Programadorpoliglota::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   
-  match 'tweets' => 'tweets#index', :as => :tweets
-  match 'sobre' => 'about#index', :as => :about
+  match 'tweets' => 'home#index', :as => :tweets
+  match 'sobre' => 'home#about', :as => :about
   
-  match 'tweets/see_more/:tag/:page' => 'tweets#see_more', :as=>:see_more
+  match 'tweets/see_more/:tag/:page' => 'home#see_more', :as=>:see_more
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -51,7 +51,7 @@ Programadorpoliglota::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "tweets#index"
+  root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 

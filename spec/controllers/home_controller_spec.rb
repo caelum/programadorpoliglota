@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TweetsController do
+describe HomeController do
   describe "#index" do
     it "should retrive all tweets for #java Tag" do
       tweets = [Tweet.new, Tweet.new]

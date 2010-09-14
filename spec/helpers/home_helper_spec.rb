@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TweetHelper do
+describe HomeHelper do
   describe '#next_page_link' do
     it 'should return the next page link' do
       helper.next_page_link(5, 3).should == '<a href="http://test.host/tweets/see_more/3/6" class="ver_mais btnMoreTweets">Ver mais</a>'
