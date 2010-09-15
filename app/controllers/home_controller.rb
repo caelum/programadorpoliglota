@@ -19,6 +19,10 @@ class HomeController < ApplicationController
  
   def about
   end
+  
+  def support
+  end
+  
   private
   
   def has_more_pages(tag)

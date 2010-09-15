@@ -14,6 +14,7 @@ Programadorpoliglota::Application.routes.draw do
   
   match 'tweets' => 'home#index', :as => :tweets
   match 'sobre' => 'home#about', :as => :about
+  match 'apoie' => 'home#support', :as => :support
   
   match 'tweets/see_more/:tag/:page' => 'home#see_more', :as=>:see_more
   # Sample resource route with options:
