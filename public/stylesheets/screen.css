@@ -658,6 +658,42 @@ body {
   color: #004900;
   background: #ffffff;
 }
+#contentWrap #supportPP {
+  margin:10px;
+  height: 500px;
+}
+#contentWrap #supportPP p {
+  padding: 10px;	
+}
+#contentWrap #supportPP li {
+  background: url('/images/bullet.gif') 1px 5px no-repeat;
+  padding: 0px 0px 15px 15px;
+  margin: 0;
+}
+#contentWrap #supportPP h2 {
+  color:#1E829F;
+  font-size:30px;
+  font-weight:bold;
+  letter-spacing:-1px;
+  line-height:30px;
+  margin-bottom:10px;
+}
+#contentWrap #aboutPP {
+  margin:10px;
+  height: 500px;
+}
+#contentWrap #aboutPP p {
+  padding: 10px;	
+}
+#contentWrap #aboutPP h2 {
+  color:#1E829F;
+  font-size:30px;
+  font-weight:bold;
+  letter-spacing:-1px;
+  line-height:30px;
+  margin-bottom:10px;
+}
+
 #footerWrap {
   width: 100%;
   height: auto;
