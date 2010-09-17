@@ -659,16 +659,11 @@ body {
   background: #ffffff;
 }
 #contentWrap #supportPP {
-  margin:10px;
-  height: 500px;
+  margin:40px;
 }
 #contentWrap #supportPP p {
-  padding: 10px;	
-}
-#contentWrap #supportPP li {
-  background: url('/images/bullet.gif') 1px 5px no-repeat;
-  padding: 0px 0px 15px 15px;
-  margin: 0;
+  padding: 10px;
+  line-height: 30px;	
 }
 #contentWrap #supportPP h2 {
   color:#1E829F;
@@ -678,20 +673,27 @@ body {
   line-height:30px;
   margin-bottom:10px;
 }
-#contentWrap #aboutPP {
-  margin:10px;
-  height: 500px;
-}
-#contentWrap #aboutPP p {
-  padding: 10px;	
-}
-#contentWrap #aboutPP h2 {
-  color:#1E829F;
-  font-size:30px;
+#contentWrap #supportPP h3 {
+  color:#666666;
+  font-size:20px;
   font-weight:bold;
   letter-spacing:-1px;
-  line-height:30px;
-  margin-bottom:10px;
+  line-height:20px;
+  margin-bottom:20px;
+}
+#contentWrap #supportPP pre {
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  -moz-background-origin:padding;
+  background:#F6F6F6 repeat-y scroll left top;
+  color:#333344;
+  font-family:"Courier New",fixed;
+  font-size:80%;
+  line-height:20px;
+  margin:20px 40px 20px 20px;
+  padding:10px 10px 10px 30px;
+  white-space:pre;
+  width: 700px;
 }
 
 #footerWrap {

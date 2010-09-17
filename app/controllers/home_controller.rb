@@ -16,9 +16,6 @@ class HomeController < ApplicationController
     
     render :layout => false
   end
- 
-  def about
-  end
   
   def support
   end
