@@ -3,9 +3,11 @@
 		<%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>	
 	<% end %>
 	</ul>
-	<%if @has_more_pages%>
-		<%= next_page_link(@page, @tag) %>
-	<% end %>
-	<% if @page >= 2 %>
-		 <%= previous_page_link(@page, @tag) %>
-	<% end%>
+  <div class='bloco_ver_mais'> 
+	  <%if @has_more_pages%>
+		  <%= next_page_link(@page, @tag) %>
+	  <% end %>
+	  <% if @page >= 2 %>
+		  <%= previous_page_link(@page, @tag) %>
+    <% end%>
+ </div>

@@ -378,12 +378,13 @@ body {
   text-decoration: underline;
 }
 #contentWrap #contentPP .shapeLang .btnMoreTweets {
-  display: block;
+  /*display: block;*/
   position: relative;
   overflow: hidden;
-  width: auto;
+  width: 80px;
   height: auto;
-  float: right;
+  /*float: right;*/
+  text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   margin: 0px 5px 10px 0px;
@@ -827,6 +828,12 @@ body {
 #footerWrap #footerPP #menuFooter li #menuFooterApoiePP {
   background-position: 3px -121px;
   padding: 5px 10px 10px 40px;
+}
+
+.bloco_ver_mais {
+  padding: 5px;
+  margin-bottom: 5px;
+  display:block;
 }
 
 /*grid less*/

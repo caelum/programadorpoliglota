@@ -4,15 +4,17 @@
       <h2 class="headerLang"><%=tag.name%></h2>
       <div class="shapeLang">	
 		<ul class="newsLang">
-		   <% @tweets[tag.name].each do |t| %>					
+		   <% @tweets[tag.name].each do |t| %>
 			   <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
 		   <% end %>
-        </ul>
-        <%= next_page_link(1, tag.id) %>
+     </ul>
+     <div class='bloco_ver_mais'> 
+       <%= next_page_link(1, tag.id) %>
+     </div>
         <div class="linkLang">
           <h3><%=tag.name %> links</h3>
 	        <ul>
-	          <% @links[tag.name].each do |l| %>					
+	          <% @links[tag.name].each do |l| %>
               <li style="min-height:45px;">
 			          <%= l.quantity %> -- <%= l.title%> <a target="blank" href="<%= l.url %>"><%= l.url %></a>
 		          </li>
@@ -41,8 +43,9 @@
 			elemento = $(this);
 			url = $(this).attr('href');
       $.get(url, function(data) {
-        div = elemento.parent();
+        div = elemento.parent().parent();
         div.find('.ver_mais').remove();
+        div.find('.bloco_ver_mais').remove();
 				div.find('.newsLang').replaceWith(data);
 				registerEvent();
 			});
