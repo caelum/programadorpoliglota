@@ -17,7 +17,7 @@ class URLInformationExtractor
       agent = Mechanize.new
       agent.user_agent_alias = 'Mac Safari'
       agent.get(@url).title
-    rescue Mechanize::ResponseCodeError
+    rescue
       @url
     end
   end
