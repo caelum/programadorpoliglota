@@ -19,8 +19,8 @@ describe Link do
     end    
 
     it "should work with trailing marks: . must be accepted, unfortunately" do
-      text = "Esse eh um teste http://url.com/a."
-      Link.scan_for_urls(text)[0].should == "http://url.com/a"
+      text = "Esse eh um teste http://url.com/a. bla bla"
+      Link.scan_for_urls(text)[0].should == "http://url.com/a."
     end
   end
 
