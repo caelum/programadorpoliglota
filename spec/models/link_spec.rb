@@ -1,6 +1,24 @@
 require 'spec_helper'
 
 describe Link do
+
+  describe "#scan_for_urls" do
+    it "should ignore link when it is just http:// (incomplete)" do
+      text = "Esse eh um teste http:// com link incompleto"
+      Link.scan_for_urls(text).size.should == 0      
+    end
+
+    it "should work with https" do
+      text = "Esse eh um teste https://secure.com/a"
+      Link.scan_for_urls(text)[0].should == "https://secure.com/a"
+    end    
+
+    it "should work with trailing marks" do
+      text = "Esse eh um teste http://url.com/a."
+      Link.scan_for_urls(text)[0].should == "https://secure.com/a"
+    end    
+  end
+
   describe "#extract_from" do
     it "should extract all links for a given tweet" do
       tag_java = Tag.new :name=>"#java"
@@ -21,31 +39,6 @@ describe Link do
       Link.create_from tweet
     end
     
-    it "should update the quantity if the link already exists" do
-      tag_java = Tag.new :name=>"#java"
-      tweet = Tweet.new :text=>"Esse eh um teste com http://bit.ly/a1 #java"
-      tweet.tag = tag_java
-      
-      link = Link.new :quantity => 1, :url => "http://www.caelum.com.br"
-      link.should_receive(:save)
-      
-      extractor = stub(URLInformationExtractor)
-      URLInformationExtractor.should_receive(:new).with('http://bit.ly/a1').and_return(extractor)
-      extractor.should_receive(:unwrap).and_return(link.url)
-      extractor.stub(:title)
-
-      Link.should_receive(:find_by_tag_id_and_url).and_return(link)
-      Link.create_from tweet
-      
-      link.quantity.should == 2
-    end
-    
-    it "should ignore link when it is just http:// (incomplete)" do
-      Link.should_not_receive(:create)
-      
-      tweet = Tweet.new :text=>"Esse eh um teste http:// com link incompleto"
-      links = Link.create_from tweet
-    end
   end
   
   describe "#most_popular_for" do

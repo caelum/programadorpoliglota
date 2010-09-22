@@ -2,7 +2,7 @@ class Link < ActiveRecord::Base
   belongs_to :tag
   
   def self.create_from (tweet)
-    urls = tweet.text.scan(/http:\/\/[^\s]+/)
+    urls = scan_for_urls(tweet.text)
     urls.each do |url|
       extractor = URLInformationExtractor.new url
       full_url = extractor.unwrap
@@ -20,5 +20,8 @@ class Link < ActiveRecord::Base
   def self.most_popular_for(tag)
       where(:tag_id=>tag.id).limit(1).order('quantity DESC, updated_at DESC')
   end
-  
+
+  def self.scan_for_urls(text)
+    text.scan(/http[s]?:\/\/[^\s]+/)
+  end  
 end
