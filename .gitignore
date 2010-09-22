@@ -6,3 +6,4 @@ log/*.log
 tmp/**/*
 coverage
 capybara-*
+database.yml
