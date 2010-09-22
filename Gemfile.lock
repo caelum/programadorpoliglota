@@ -138,6 +138,8 @@ GEM
       oauth (~> 0.4.1)
       yajl-ruby (~> 0.7.0)
     tzinfo (0.3.23)
+    unicorn (1.1.3)
+      rack
     webrat (0.7.2.beta.1)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -166,4 +168,5 @@ DEPENDENCIES
   spork
   test_notifier
   twitter
+  unicorn
   whenever
