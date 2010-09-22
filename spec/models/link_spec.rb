@@ -13,10 +13,15 @@ describe Link do
       Link.scan_for_urls(text)[0].should == "https://secure.com/a"
     end    
 
-    it "should work with trailing marks" do
-      text = "Esse eh um teste http://url.com/a."
-      Link.scan_for_urls(text)[0].should == "https://secure.com/a"
+    it "should work with trailing marks: !" do
+      text = "Esse eh um teste http://url.com/a!!!"
+      Link.scan_for_urls(text)[0].should == "http://url.com/a"
     end    
+
+    it "should work with trailing marks: . must be accepted, unfortunately" do
+      text = "Esse eh um teste http://url.com/a."
+      Link.scan_for_urls(text)[0].should == "http://url.com/a"
+    end
   end
 
   describe "#extract_from" do

@@ -22,6 +22,6 @@ class Link < ActiveRecord::Base
   end
 
   def self.scan_for_urls(text)
-    text.scan(/http[s]?:\/\/[^\s]+/)
+    text.scan(/http[s]?:\/\/+[\w\d:\#\@\%\/;\$\(\)\~\_\?\+\-\=\\\.&]+/)
   end  
 end
