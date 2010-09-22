@@ -9,3 +9,8 @@ Para contribuir com o programador poliglota com funcionalidades, patches ou qual
 h1. Licença
 
 Programdor Poliglota é distribuído sob a licença MIT e uma cópia da mesma pode ser encontrada dentro do arquivo LICENSE. 
+
+h1. Rodando
+
+Para rodar, primeiramente configure seu banco de dados em config/database.yml (há um arquivo de exemplo que pode ser seguido). Depois faca rake db:migrate e finalmente rake spec.
+
