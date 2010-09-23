@@ -4,13 +4,23 @@ O projeto programador poliglota é um movimento para agregar as diversas comunid
 
 h1. Contribuindo
 
-Para contribuir com o programador poliglota com funcionalidades, patches ou qualquer outra ideia genial que você tenha, faça um fork do projeto, crie sua funcionalidade (não se esqueça de escrever os testes) e submeta um pull request para nós.
+O programador poliglota foi desenvolvido em Rails3 e para contribuir com o projeto através de novas funcionalidades, patches ou qualquer outra ideia genial que você tenha, faça um fork do projeto, crie sua funcionalidade (não se esqueça de escrever os testes) e submeta um pull request para nós.
 
 h1. Licença
 
 Programdor Poliglota é distribuído sob a licença MIT e uma cópia da mesma pode ser encontrada dentro do arquivo LICENSE. 
 
-h1. Rodando
+h1. Configurando ambiente e executando a aplicação.
 
-Para rodar, primeiramente configure seu banco de dados em config/database.yml (há um arquivo de exemplo que pode ser seguido). Depois faca rake db:migrate e finalmente rake spec.
+Para rodar, primeiramente configure seu banco de dados em config/database.yml (há um arquivo de exemplo que pode ser seguido). Instale as gems necessárias com @bundle install@ (talvez seja necessário instalar o bundler antes). Depois faça rake db:migrate.
+
+Após isso, adicione as hashtags que achar conveniente (lembre-se que a página inicial foi desenvolvida para suportar 6 tags). Uma forma de adicionar é acessar o rails console e fazer:
+
+@Tag.create :name=>'#ruby'@
+
+Depois de adicionadas as Tags, faça a importação dos tweets (dependendo da sua conexão essa tarefa pode demorar):
+
+@Tweet.add_new_tweets@
+
+E finalmente para executar os testes: @rake spec@.
 
