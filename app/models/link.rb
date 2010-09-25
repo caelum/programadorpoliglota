@@ -18,7 +18,7 @@ class Link < ActiveRecord::Base
   end
 
   def self.most_popular_for(tag)
-      where(:tag_group_id=>tag.id).limit(1).order('quantity DESC, updated_at DESC')
+      where(:tag_group_id=>tag.id).limit(3).order('quantity DESC, updated_at DESC')
   end
 
   def self.scan_for_urls(text)

@@ -12,11 +12,11 @@
        <%= next_page_link(1, tag_group.id) %>
      </div>
         <div class="linkLang">
-          <h3><%=tag_group.name %> links</h3>
+          <h3><%=tag_group.name %> top links</h3>
 	        <ul>
 	          <% @links[tag_group.name].each do |l| %>
-              <li style="min-height:45px;">
-			          <%= l.quantity %> -- <%= l.title%> <a target="blank" href="<%= l.url %>"><%= l.url %></a>
+              <li style="min-height:30px;">
+			          <a target="blank" href="<%= l.url %>"><%= l.quantity %> - <%= l.title%></a>
 		          </li>
 	          <% end%>
 	        </ul>
