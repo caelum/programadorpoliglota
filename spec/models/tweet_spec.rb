@@ -3,111 +3,110 @@ require 'spec_helper'
 describe Tweet do
   describe "#add_new_tweets" do
     it "should not add new tweets when no tags are found" do
-      Tag.should_receive(:all).and_return([])
+      TagGroup.should_receive(:all).and_return([])
       Tweet.add_new_tweets
       Tweet.should_not_receive(:where)
     end
-    
-    it "should save ALL tweets when there are no tweets for a given tag" do
-      tag = mock_model(Tag)
-      tag.should_receive(:name).and_return('#java')
-      Tag.should_receive(:all).and_return([tag])
-      Link.should_receive(:create_from)
-      
-      query = Object.new 
-      Tweet.should_receive(:where).with(:tag_id=>tag.id).and_return(query)
-      query.should_receive(:order).with('date').and_return(query)
-      query.should_receive(:last).and_return(nil)
-      
-      RetweetedUser.should_receive(:extract_retweets_from)
-      
-      tweets = Hashie::Mash.new
-      
-      twitter_query = Object.new
-      Twitter::Search.should_receive(:new).with('#java').and_return(twitter_query)
-      twitter_query.should_receive(:lang).with('pt').and_return(twitter_query)
-      twitter_query.should_receive(:per_page).with(100).and_return(twitter_query)
-      twitter_query.should_not_receive(:since_date)
-      twitter_query.should_receive(:each).and_yield(tweets)
-      
-      tag.should_receive(:tweets).and_return([])
-      
-      Tweet.add_new_tweets
-    end
-    
-    it "should save just new tweets when there are old tweets for a given tag" do
-      tag = mock_model(Tag)
-      tag.should_receive(:name).and_return('#java')
-      Tag.should_receive(:all).and_return([tag])
-      Link.should_receive(:create_from)
-      
-      tweet = mock_model(Tweet)
-      tweet.should_receive(:tweet_id).and_return(10)
-      
-      Tweet.stub_chain(:where, :order, :last).and_return(tweet)
-      RetweetedUser.should_receive(:extract_retweets_from)
-      
-      tweets = Hashie::Mash.new
-      
-      twitter_query = Object.new
-      Twitter::Search.should_receive(:new).with('#java').and_return(twitter_query)
-      twitter_query.should_receive(:lang).with('pt').and_return(twitter_query)
-      twitter_query.should_receive(:per_page).with(100).and_return(twitter_query)
-      twitter_query.should_receive(:since).with(10).and_return(twitter_query)
-      twitter_query.should_receive(:each).and_yield(tweets)
-      
-      tag.should_receive(:tweets).and_return([])
-      
-      Tweet.add_new_tweets
-    end 
-  end
+  end  
   
   describe '#last_tweets_for_tag' do
     it 'should return the tweets for a given tag' do
-      java_tag = Tag.create :name=> '#java'
-      ruby_tag = Tag.create :name=> '#ruby'
-      Tweet.create :text=>'tweet 1', :tag=>java_tag
-      Tweet.create :text=>'tweet 2', :tag=>ruby_tag
+      java_tag_group = TagGroup.create :name=> '#java'
+      ruby_tag_group = TagGroup.create :name=> '#ruby'
+      Tweet.create :text=>'tweet 1', :tag_group=>java_tag_group
+      Tweet.create :text=>'tweet 2', :tag_group=>ruby_tag_group
       
-      found = Tweet.last_tweets_for java_tag
+      found = Tweet.last_tweets_for java_tag_group
       
       found.size.should == 1
     end
     
     it 'should return the tweets ordered by date (DESC)' do
-      java_tag = Tag.create :name=> '#java'
-      newer_1 = Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
-      older = Tweet.create :text=>'older', :tag=>java_tag, :date=>Time.now-1.day
-      newer_2 = Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
+      java_tag_group = TagGroup.create :name=> '#java'
+      newer_1 = Tweet.create :text=>'tweet 2', :tag_group=>java_tag_group, :date=>Time.now
+      older = Tweet.create :text=>'older', :tag_group=>java_tag_group, :date=>Time.now-1.day
+      newer_2 = Tweet.create :text=>'tweet 2', :tag_group=>java_tag_group, :date=>Time.now
 
-      found = Tweet.last_tweets_for java_tag
+      found = Tweet.last_tweets_for java_tag_group
       found[2].should == older
     end
     
     it 'should return the tweets paginated' do
-      java_tag = Tag.create :name=> '#java'
+      java_tag_group = TagGroup.create :name=> '#java'
       
       15.times do 
-        Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
+        Tweet.create :text=>'tweet 2', :tag_group=>java_tag_group, :date=>Time.now
       end
       
-      found = Tweet.last_tweets_for(java_tag, :page=>2)
+      found = Tweet.last_tweets_for(java_tag_group, :page=>2)
 
-      found[0].tag.name.should == java_tag.name
+      found[0].tag_group.name.should == java_tag_group.name
       found.size.should == 4
     end
   end
   
   describe "#amount_of_tweets_for" do
     it "should return 15 when 15 tweets are created for a given tag" do
-      java_tag = Tag.create :name=> '#java'
+      java_tag_group = TagGroup.create :name=> '#java'
       15.times do 
-        Tweet.create :text=>'tweet 2', :tag=>java_tag, :date=>Time.now
+        Tweet.create :text=>'tweet 2', :tag_group=>java_tag_group, :date=>Time.now
       end
       
-      amount = Tweet.amount_of_tweets_for(java_tag)
+      amount = Tweet.amount_of_tweets_for(java_tag_group)
       
       amount.should == 15
     end
   end
+  
+  describe "#create_if_doesnt_exist_in_tag_group" do
+    it "should create a new tweet if it does not exist in the tag group" do
+      java_tag_group = TagGroup.create :name=> '#java'
+      
+      user = User.create :twitter_id => '@lucasas', :image_url => 'foto.png'
+      User.should_receive(:create_user_if_not_exists).and_return(user)
+      
+      tweet_of_twitter = Object.new
+      tweet_of_twitter.should_receive(:text).and_return('Um tweet')
+      tweet_of_twitter.should_receive(:created_at).and_return(Time.now)
+      tweet_of_twitter.should_receive(:id).twice.and_return('123456')
+      
+      Tweet.create_if_doesnt_exist_in_tag_group tweet_of_twitter, java_tag_group
+      Tweet.all.size.should == 1
+    end 
+    
+    it "should not create a new tweet if it exists in the tag group" do
+      java_tag_group = TagGroup.create :name=> '#java'
+      user = User.create :twitter_id => '@lucasas', :image_url => 'foto.png'
+      tweet = Tweet.create :user=> user, :text=>'Um tweet', :date=>Time.now, :tag_group=> java_tag_group, :tweet_id=>'123456'
+      
+      tweet_of_twitter = Object.new
+      tweet_of_twitter.should_receive(:id).and_return('123456')
+      
+      Tweet.stub_chain(:where, :exists?).and_return(true)
+      Tweet.create_if_doesnt_exist_in_tag_group tweet_of_twitter, java_tag_group
+      
+      Tweet.all.last.should == tweet
+      Tweet.all.size.should == 1
+    end 
+    
+    it "should create a new tweet if it exists in any tag group unless in the expected tag group" do
+      java_tag_group = TagGroup.create :name=> '#java'
+      ruby_tag_group = TagGroup.create :name=> '#ruby'
+      
+      user = User.create :twitter_id => '@lucasas', :image_url => 'foto.png'
+      User.should_receive(:create_user_if_not_exists).and_return(user)
+      
+      Tweet.create :user=> user, :text=>'Um tweet', :date=>Time.now, :tag_group=> ruby_tag_group, :tweet_id=>'123456'
+      
+      tweet_of_twitter = Object.new
+      tweet_of_twitter.should_receive(:text).and_return('Um tweet')
+      tweet_of_twitter.should_receive(:created_at).and_return(Time.now)
+      tweet_of_twitter.should_receive(:id).twice.and_return('123456')
+      
+      Tweet.stub_chain(:where, :exists?).and_return(false)
+      Tweet.create_if_doesnt_exist_in_tag_group tweet_of_twitter, java_tag_group
+    
+      Tweet.all.size.should == 2
+    end
+  end  
 end

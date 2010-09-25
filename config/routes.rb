@@ -13,10 +13,9 @@ Programadorpoliglota::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   
   match 'tweets' => 'home#index', :as => :tweets
-  match 'sobre' => 'home#about', :as => :about
   match 'apoie' => 'home#support', :as => :support
   
-  match 'tweets/see_more/:tag/:page' => 'home#see_more', :as=>:see_more
+  match 'tweets/see_more/:tag_group/:page' => 'home#see_more', :as=>:see_more
   # Sample resource route with options:
   #   resources :products do
   #     member do

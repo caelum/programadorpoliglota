@@ -5,9 +5,9 @@
 	</ul>
   <div class='bloco_ver_mais'> 
 	  <%if @has_more_pages%>
-		  <%= next_page_link(@page, @tag) %>
+		  <%= next_page_link(@page, @tag_group) %>
 	  <% end %>
 	  <% if @page >= 2 %>
-		  <%= previous_page_link(@page, @tag) %>
+		  <%= previous_page_link(@page, @tag_group) %>
     <% end%>
  </div>

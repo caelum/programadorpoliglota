@@ -1,10 +1,10 @@
 module HomeHelper
-  def next_page_link(page, tag)
-    link_to 'Ver mais', see_more_url(:page=>page + 1, :tag=>tag), :class=>'ver_mais btnMoreTweets'
+  def next_page_link(page, tag_group)
+    link_to 'Ver mais', see_more_url(:page=>page + 1, :tag_group=>tag_group), :class=>'ver_mais btnMoreTweets'
   end
   
-  def previous_page_link(page, tag)
-    link_to 'Anteriores', see_more_url(:page=>page - 1, :tag=>tag), :class=>'ver_mais btnMoreTweets'
+  def previous_page_link(page, tag_group)
+    link_to 'Anteriores', see_more_url(:page=>page - 1, :tag_group=>tag_group), :class=>'ver_mais btnMoreTweets'
   end
   
   def image_url_of(user)

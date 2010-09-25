@@ -10,21 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100827173657) do
+ActiveRecord::Schema.define(:version => 20100923191728) do
 
   create_table "links", :force => true do |t|
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tag_id"
     t.integer  "quantity"
     t.string   "title"
+    t.integer  "tag_group_id"
   end
 
   create_table "retweeted_users", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "tag_id"
     t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tag_group_id"
+  end
+
+  create_table "tag_groups", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,16 +39,17 @@ ActiveRecord::Schema.define(:version => 20100827173657) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tag_group_id"
   end
 
   create_table "tweets", :force => true do |t|
     t.datetime "date"
     t.string   "text"
-    t.integer  "tag_id"
     t.string   "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "tag_group_id"
   end
 
   create_table "users", :force => true do |t|
