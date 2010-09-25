@@ -98,7 +98,7 @@ a img, :link img, :visited img {
 }
 body {
   background: #646464 url('img/bgSite.png');
-  font-family: 'Inconsolata', Arial, Sans-Serif;
+  font-family: 'Lucida Grande',sans-serif
 }
 #headerWrap {
   background: #1e1e1e url('img/csg-4c80248723095.png') repeat-x 0 0;
@@ -343,7 +343,7 @@ body {
   overflow: hidden;
   width: 100%;
   height: auto;
-  font-size: 11px;
+  font-size: 13px;
   padding: 0px 0px 5px 0px;
   margin: 0px 0px 5px 0px;
   border-bottom: 1px solid #000068;
@@ -355,6 +355,10 @@ body {
   float: left;
   width: auto;
   height: auto;
+}
+#contentWrap #contentPP .shapeLang .newsLang .twitter_time a {
+  color: #999999;
+  font-size: 11px;
 }
 #contentWrap #contentPP .shapeLang .newsLang li p {
   display: block;
@@ -665,6 +669,16 @@ body {
 #contentWrap #supportPP p {
   padding: 10px;
   line-height: 30px;	
+}
+#contentWrap #supportPP a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2e35cc;
+  padding: 0px;
+}
+#contentWrap #supportPP a:hover {
+  color: #646464;
+  text-decoration: underline;
 }
 #contentWrap #supportPP h2 {
   color:#1E829F;
