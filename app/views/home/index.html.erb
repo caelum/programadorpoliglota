@@ -24,7 +24,7 @@
 		<div class="retweetedPeopleLang">
 			<% @retweeted_users[tag_group.name].each do |ru| %>
 				<a target="blank" href="http://www.twitter.com/<%=ru.user.twitter_id%>">
-			    	<img src='<%= image_url_of(ru.user) %>' style="width:48px; height:48px;">
+          <%= image_tag image_url_of(ru.user), :class=>'twitter_photo' %>
 				</a>
 			<% end %>
 		</div>

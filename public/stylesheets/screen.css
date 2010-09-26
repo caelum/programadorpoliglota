@@ -365,6 +365,11 @@ body {
   font-size: 12px;
 }
 
+.twitter_photo {
+  width: 48px;
+  height: 48px;
+}
+
 #contentWrap #contentPP .shapeLang .newsLang li p {
   display: block;
   position: relative;
