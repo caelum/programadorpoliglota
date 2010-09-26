@@ -16,7 +16,7 @@
 	        <ul>
 	          <% @links[tag_group.name].each do |l| %>
               <li style="min-height:30px;">
-			          <a target="blank" href="<%= l.url %>"><%= l.quantity %> - <%= l.title%></a>
+                <a target="blank" href="<%= l.url %>"><%= l.quantity %> - <%= truncate(l.title, :length=>80, :separator=>' ') %></a>
 		          </li>
 	          <% end%>
 	        </ul>
