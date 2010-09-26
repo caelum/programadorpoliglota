@@ -360,6 +360,11 @@ body {
   color: #999999;
   font-size: 11px;
 }
+
+#contentWrap #contentPP .shapeLang .newsLang .tweet_text {
+  font-size: 12px;
+}
+
 #contentWrap #contentPP .shapeLang .newsLang li p {
   display: block;
   position: relative;
