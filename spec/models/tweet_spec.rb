@@ -2,10 +2,20 @@ require 'spec_helper'
 
 describe Tweet do
   describe "#add_new_tweets" do
-    it "should not add new tweets when no tags are found" do
+    it "should not add new tweets when no tag group is found" do
       TagGroup.should_receive(:all).and_return([])
       Tweet.add_new_tweets
       Tweet.should_not_receive(:where)
+    end
+
+    it "should build twitter query and create new tweets from it for all existent tag groups" do
+      group = TagGroup.new :name=>'Ruby'
+      query = Object.new
+      TagGroup.should_receive(:all).and_return([group])
+      Tweet.should_receive(:build_twitter_query_for).with(group).and_return(query)
+      Tweet.should_receive(:create_new_tweets_from_query).with(query, group)
+
+      Tweet.add_new_tweets
     end
   end  
   
@@ -108,5 +118,13 @@ describe Tweet do
     
       Tweet.all.size.should == 2
     end
-  end  
+  end 
+
+  describe "build_twitter_query_for" do
+    it "should return the tweets from twitter api for the tags of a given tag group" do
+      
+    end
+    end
+  end
+  end
 end
