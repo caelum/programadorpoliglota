@@ -4,15 +4,20 @@ class Link < ActiveRecord::Base
   def self.create_from (tweet)
     urls = scan_for_urls(tweet.text)
     urls.each do |url|
-      extractor = URLInformationExtractor.new url
-      full_url = extractor.unwrap
-      link_found = Link.find_by_tag_group_id_and_url(tweet.tag_group.id, full_url)
-      if link_found 
-        link_found.quantity += 1
-        link_found.save
-      else
-        link = Link.create :url=>full_url, :tag_group=>tweet.tag_group, :quantity => 1, :title=>extractor.title
-        tweet.tag_group.links << link
+      begin
+        extractor = URLInformationExtractor.new url
+        full_url = extractor.unwrap
+        link_found = Link.find_by_tag_group_id_and_url(tweet.tag_group.id, full_url)
+        if link_found 
+          link_found.quantity += 1
+          link_found.save
+        else
+          link = Link.create :url=>full_url, :tag_group=>tweet.tag_group, :quantity => 1, :title=>extractor.title
+          tweet.tag_group.links << link
+        end
+      rescue
+        puts 'There was a problem importing a URL'
+        #TODO improve this
       end
     end
   end
