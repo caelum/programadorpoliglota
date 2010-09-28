@@ -2,16 +2,8 @@
   <% @tag_groups.each do |tag_group| %>
     <div class="size3 bSpace01 fLeft lang0<%=tag_group.id %>">
       <h2 class="headerLang"><%=tag_group.name%></h2>
-      <div class="shapeLang">	
-		<ul class="newsLang">
-		   <% @tweets[tag_group.name].each do |t| %>
-			   <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
-		   <% end %>
-     </ul>
-     <div class='bloco_ver_mais'> 
-       <%= next_page_link(1, tag_group.id) %>
-     </div>
-        <div class="linkLang">
+      <div class="shapeLang">
+      <div class="linkLang">
           <h3><%=tag_group.name %> top links</h3>
 	        <ul>
 	          <% @links[tag_group.name].each do |l| %>
@@ -20,8 +12,16 @@
 		          </li>
 	          <% end%>
 	        </ul>
-        </div>
-		<div class="retweetedPeopleLang">
+      </div>
+		<ul class="newsLang">
+		   <% @tweets[tag_group.name].each do |t| %>
+			   <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
+		   <% end %>
+     </ul>
+     <div class='bloco_ver_mais'> 
+       <%= next_page_link(1, tag_group.id) %>
+     </div>
+        <div class="retweetedPeopleLang">
 			<% @retweeted_users[tag_group.name].each do |ru| %>
 				<a target="blank" href="http://www.twitter.com/<%=ru.user.twitter_id%>">
           <%= image_tag image_url_of(ru.user), :class=>'twitter_photo' %>
