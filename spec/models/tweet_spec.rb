@@ -120,7 +120,7 @@ describe Tweet do
     end
   end 
 
-  describe "build_twitter_query_for" do
+  describe "#build_twitter_query_for" do
     it "should return the queries for the twitter api for the tags of a given tag group" do
       group = TagGroup.new
       group.tags << [Tag.new, Tag.new]
@@ -133,6 +133,32 @@ describe Tweet do
 
       queries = Tweet.build_twitter_query_for group
       queries.size.should == 2
+    end
+  end
+
+  describe '#create_new_tweets_from_query' do
+    it "should create tweet if it doesnt exist in the tag group for every tweet in the queries" do
+      tweet_1 = Object.new
+      tweet_2 = Object.new
+      group = TagGroup.new
+      query = [tweet_1, tweet_2]
+      queries = [query]
+      tweet_1.stub(:id); tweet_2.stub(:id)
+
+      Tweet.should_receive(:create_if_doesnt_exist_in_tag_group).twice.with(anything(),group)
+
+      Tweet.create_new_tweets_from_query(queries, group)
+    end
+  end
+
+  describe 'last_tweet_from_group' do
+    it 'should retrieve the last tweet for the group' do
+      group = TagGroup.create(:name=>'A Group')
+      Tweet.create(:text=>'last', :date=>Time.now, :tag_group=>group)
+      Tweet.create(:text=>'first', :date=>Time.now - 5.seconds, :tag_group=>group)
+
+      tweet = Tweet.last_tweet_from_group group
+      tweet.text.should == 'last'
     end
   end
 end

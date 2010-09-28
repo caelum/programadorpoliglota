@@ -38,6 +38,10 @@ class Tweet < ActiveRecord::Base
     end  
   end
   
+  def self.last_tweet_from_group(a_group) 
+    Tweet.where(:tag_group_id=>a_group.id).order('date').last
+  end
+
   private
 
   def self.build_twitter_query_for(tag_group)
@@ -52,10 +56,6 @@ class Tweet < ActiveRecord::Base
     queries
   end
   
-  def self.last_tweet_from_group(a_group) 
-    Tweet.where(:tag_group_id=>a_group.id).order('date').last
-  end
-
   def self.create_new_tweets_from_query(twitter_queries, tag_group)
     logger.info "Creating tweets for the tag group #{tag_group.name}"
     twitter_queries.each do |query|
