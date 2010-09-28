@@ -4,14 +4,14 @@ class Tweet < ActiveRecord::Base
   TWEETS_PER_PAGE = 4
 
   def self.add_new_tweets
-    logger.info "Adding new tweets at #{Time.now}"
+    start = Time.now
     tag_groups = TagGroup.all
     tag_groups.each do |tag_group|
       logger.debug "Adding tweets of #{tag_group.name}"
       twitter_queries = build_twitter_query_for(tag_group)
       create_new_tweets_from_query(twitter_queries, tag_group) 
     end
-    logger.info "Tweets added at #{Time.now}"
+    logger.info "Tweets added in #{Time.now - start} seconds"
   end
   
   def self.last_tweets_for(tag_group, hash={})
