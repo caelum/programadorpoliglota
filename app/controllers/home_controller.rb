@@ -13,6 +13,7 @@ class HomeController < ApplicationController
     @tag_group = TagGroup.find(params[:tag_group].to_i)
     @tweets = retrieve_tweets_for @tag_group, @page    
     has_more_pages(@tag_group)
+    logger.info "Asking for page ##{@page} of group #{@tag_group.name}"
     
     render :layout => false
   end

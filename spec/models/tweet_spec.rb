@@ -68,7 +68,7 @@ describe Tweet do
       tweet_of_twitter = Object.new
       tweet_of_twitter.should_receive(:text).and_return('Um tweet')
       tweet_of_twitter.should_receive(:created_at).and_return(Time.now)
-      tweet_of_twitter.should_receive(:id).twice.and_return('123456')
+      tweet_of_twitter.should_receive(:id).at_least(:twice).and_return('123456')
       
       Tweet.create_if_doesnt_exist_in_tag_group tweet_of_twitter, java_tag_group
       Tweet.all.size.should == 1
@@ -80,7 +80,7 @@ describe Tweet do
       tweet = Tweet.create :user=> user, :text=>'Um tweet', :date=>Time.now, :tag_group=> java_tag_group, :tweet_id=>'123456'
       
       tweet_of_twitter = Object.new
-      tweet_of_twitter.should_receive(:id).and_return('123456')
+      tweet_of_twitter.should_receive(:id).at_least(:once).and_return('123456')
       
       Tweet.stub_chain(:where, :exists?).and_return(true)
       Tweet.create_if_doesnt_exist_in_tag_group tweet_of_twitter, java_tag_group
@@ -101,7 +101,7 @@ describe Tweet do
       tweet_of_twitter = Object.new
       tweet_of_twitter.should_receive(:text).and_return('Um tweet')
       tweet_of_twitter.should_receive(:created_at).and_return(Time.now)
-      tweet_of_twitter.should_receive(:id).twice.and_return('123456')
+      tweet_of_twitter.should_receive(:id).at_least(:twice).and_return('123456')
       
       Tweet.stub_chain(:where, :exists?).and_return(false)
       Tweet.create_if_doesnt_exist_in_tag_group tweet_of_twitter, java_tag_group

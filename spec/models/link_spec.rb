@@ -42,7 +42,6 @@ describe Link do
           
       Link.create_from tweet
     end
-    
   end
   
   describe "#most_popular_for" do
@@ -67,4 +66,20 @@ describe Link do
       popular_links.last == older
     end
   end  
+
+  describe "#extract_title" do
+    it "should return the title from the extractor when no error occur" do
+      extractor = Object.new
+      extractor.should_receive(:title).and_return('Title retrieved from the extractor')
+      title = Link.extract_title(extractor, 'aFullURL')
+      title.should == 'Title retrieved from the extractor'
+    end
+
+    it "should return the full url when an exception is raised while extracting the title" do
+      extractor = Object.new
+      extractor.should_receive(:title).and_raise('Exception')
+      title = Link.extract_title(extractor, 'aFullURL')
+      title.should == 'aFullURL'
+    end
+  end
 end
