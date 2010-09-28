@@ -3,35 +3,35 @@
     <div class="size3 bSpace01 fLeft lang0<%=tag_group.id %>">
       <h2 class="headerLang"><%=tag_group.name%></h2>
       <div class="shapeLang">
-      <div class="linkLang">
+        <div class="linkLang">
           <h3><%=tag_group.name %> top links</h3>
-	        <ul>
-	          <% @links[tag_group.name].each do |l| %>
+          <ul>
+            <% @links[tag_group.name].each do |l| %>
               <li style="min-height:30px;">
                 <a target="blank" href="<%= l.url %>"><%= l.quantity %> - <%= truncate(l.title, :length=>80, :separator=>' ') %></a>
-		          </li>
-	          <% end%>
-	        </ul>
-      </div>
-		<ul class="newsLang">
-		   <% @tweets[tag_group.name].each do |t| %>
-			   <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
-		   <% end %>
-     </ul>
-     <div class='bloco_ver_mais'> 
-       <%= next_page_link(1, tag_group.id) %>
-     </div>
+              </li>
+            <% end%>
+          </ul>
+        </div>
+        <ul class="newsLang">
+          <% @tweets[tag_group.name].each do |t| %>
+            <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
+          <% end %>
+        </ul>
+        <div class='bloco_ver_mais'> 
+          <%= next_page_link(1, tag_group.id) %>
+        </div>
         <div class="retweetedPeopleLang">
-			<% @retweeted_users[tag_group.name].each do |ru| %>
-				<a target="blank" href="http://www.twitter.com/<%=ru.user.twitter_id%>">
-          <%= image_tag image_url_of(ru.user), :class=>'twitter_photo' %>
-				</a>
-			<% end %>
-		</div>
+          <% @retweeted_users[tag_group.name].each do |ru| %>
+            <a target="blank" href="http://www.twitter.com/<%=ru.user.twitter_id%>">
+              <%= image_tag image_url_of(ru.user), :class=>'twitter_photo' %>
+            </a>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
-	<a class="moreLangOptions size1_null" href="http://twitter.com/?status=@progpoliglota"><span>Alguma linguagem faltando? Solicite mais linguagens.</span></a>
+  <a class="moreLangOptions size1_null" href="http://twitter.com/?status=@progpoliglota"><span>Alguma linguagem faltando? Solicite mais linguagens.</span></a>
 </div>
 <script type="text/javascript">
 	$(function() {
