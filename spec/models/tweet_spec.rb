@@ -1,24 +1,7 @@
 require 'spec_helper'
 
 describe Tweet do
-  describe "#add_new_tweets" do
-    it "should not add new tweets when no tag group is found" do
-      TagGroup.should_receive(:all).and_return([])
-      Tweet.add_new_tweets
-      Tweet.should_not_receive(:where)
-    end
-
-    it "should build twitter query and create new tweets from it for all existent tag groups" do
-      group = TagGroup.new :name=>'Ruby'
-      query = Object.new
-      TagGroup.should_receive(:all).and_return([group])
-      Tweet.should_receive(:build_twitter_query_for).with(group).and_return(query)
-      Tweet.should_receive(:create_new_tweets_from_query).with(query, group)
-
-      Tweet.add_new_tweets
-    end
-  end  
-  
+ 
   describe '#last_tweets_for_tag' do
     it 'should return the tweets for a given tag' do
       java_tag_group = TagGroup.create :name=> '#java'
@@ -120,23 +103,7 @@ describe Tweet do
     end
   end 
 
-  describe "#build_twitter_query_for" do
-    it "should return the queries for the twitter api for the tags of a given tag group" do
-      group = TagGroup.new
-      group.tags << [Tag.new, Tag.new]
-      last = Object.new
-      Tweet.stub(:last_tweet_from_group).with(group).and_return(last)
-      last.stub(:tweet_id).and_return(1)
-      query = Object.new
-      Twitter::Search.stub(:new).and_return(query)
-      query.stub_chain(:lang, :per_page, :since)
-
-      queries = Tweet.build_twitter_query_for group
-      queries.size.should == 2
-    end
-  end
-
-  describe '#create_new_tweets_from_query' do
+  describe '#create_new_tweets_from_queries' do
     it "should create tweet if it doesnt exist in the tag group for every tweet in the queries" do
       tweet_1 = Object.new
       tweet_2 = Object.new
@@ -147,7 +114,7 @@ describe Tweet do
 
       Tweet.should_receive(:create_if_doesnt_exist_in_tag_group).twice.with(anything(),group)
 
-      Tweet.create_new_tweets_from_query(queries, group)
+      Tweet.create_new_tweets_from_queries(queries, group)
     end
   end
 

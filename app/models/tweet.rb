@@ -3,17 +3,6 @@ class Tweet < ActiveRecord::Base
   belongs_to :user
   TWEETS_PER_PAGE = 4
 
-  def self.add_new_tweets
-    start = Time.now
-    tag_groups = TagGroup.all
-    tag_groups.each do |tag_group|
-      logger.debug "Adding tweets of #{tag_group.name}"
-      twitter_queries = build_twitter_query_for(tag_group)
-      create_new_tweets_from_query(twitter_queries, tag_group) 
-    end
-    logger.info "Tweets added in #{Time.now - start} seconds"
-  end
-  
   def self.last_tweets_for(tag_group, hash={})
     options = {:page=>1}
     options.merge! hash
@@ -24,7 +13,17 @@ class Tweet < ActiveRecord::Base
   def self.amount_of_tweets_for(tag_group)
     where(:tag_group_id=>tag_group.id).size
   end
-  
+
+  def self.create_new_tweets_from_queries(twitter_queries, tag_group)
+    logger.info "Creating tweets for the tag group #{tag_group.name}"
+    twitter_queries.each do |query|
+      query.each do |tweet|
+        logger.debug "Trying to add the tweet ##{tweet.id}"
+        create_if_doesnt_exist_in_tag_group tweet, tag_group
+      end
+    end
+  end 
+
   def self.create_if_doesnt_exist_in_tag_group(tweet, tag_group)
     if !where(:tweet_id => tweet.id, :tag_group_id => tag_group.id).exists?
       user = User.create_user_if_not_exists tweet
@@ -41,28 +40,4 @@ class Tweet < ActiveRecord::Base
   def self.last_tweet_from_group(a_group) 
     Tweet.where(:tag_group_id=>a_group.id).order('date').last
   end
-
-  private
-
-  def self.build_twitter_query_for(tag_group)
-    queries = []
-    tag_group.tags.each do |tag|
-      logger.debug "Accessing twitter API and searching for #{tag.name}"
-      last_tweet = last_tweet_from_group tag_group
-      twitter_query = Twitter::Search.new(tag.name).lang('pt').per_page(100)
-      twitter_query = twitter_query.since(last_tweet.tweet_id.to_i) if last_tweet
-      queries << twitter_query
-    end
-    queries
-  end
-  
-  def self.create_new_tweets_from_query(twitter_queries, tag_group)
-    logger.info "Creating tweets for the tag group #{tag_group.name}"
-    twitter_queries.each do |query|
-      query.each do |tweet|
-        logger.debug "Trying to add the tweet ##{tweet.id}"
-        create_if_doesnt_exist_in_tag_group tweet, tag_group
-      end
-    end
-  end  
 end
