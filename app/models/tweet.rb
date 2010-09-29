@@ -11,10 +11,10 @@ class Tweet < ActiveRecord::Base
   end
   
   def self.amount_of_tweets_for(tag_group)
-    where(:tag_group_id=>tag_group.id).size
+    where(:tag_group_id=>tag_group.id).count
   end
 
-  def self.create_new_tweets_from_queries(twitter_queries, tag_group)
+  def self.create_tweets_from_queries(twitter_queries, tag_group)
     logger.info "Creating tweets for the tag group #{tag_group.name}"
     twitter_queries.each do |query|
       query.each do |tweet|
