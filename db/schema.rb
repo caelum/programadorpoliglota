@@ -10,13 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100923191728) do
+ActiveRecord::Schema.define(:version => 20100929175544) do
 
   create_table "links", :force => true do |t|
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "quantity"
     t.string   "title"
     t.integer  "tag_group_id"
   end

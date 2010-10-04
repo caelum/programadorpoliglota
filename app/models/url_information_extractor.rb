@@ -1,3 +1,5 @@
+require 'logger'
+
 class URLInformationExtractor
   def initialize(url)
     @url = url
@@ -17,7 +19,9 @@ class URLInformationExtractor
       agent = Mechanize.new
       agent.user_agent_alias = 'Mac Safari'
       agent.get(@url).title
-    rescue
+    rescue Exception => e
+      logger   = Logger.new('links.log')
+      logger.error "Problems extracting title: #{e}. Will use the full url as the title"
       @url
     end
   end
