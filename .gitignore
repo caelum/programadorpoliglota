@@ -8,3 +8,4 @@ coverage
 capybara-*
 database.yml
 links.log
+.DS_Store
