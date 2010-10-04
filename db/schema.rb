@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100929175544) do
+ActiveRecord::Schema.define(:version => 20101004171756) do
 
   create_table "links", :force => true do |t|
     t.string   "url"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20100929175544) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tag_group_id"
+    t.string   "query"
   end
 
   create_table "tweets", :force => true do |t|
