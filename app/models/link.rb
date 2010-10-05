@@ -10,7 +10,7 @@ class Link < ActiveRecord::Base
 
       full_url = extractor.unwrap
       logger.debug "The full url found is: #{full_url}"
-      title = extractor.title
+      title = extractor.title(full_url)
       logger.debug "The title of url found is: #{title}"
 
       link = Link.create :url=>full_url, :tag_group=>tweet.tag_group, :title=>title

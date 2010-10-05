@@ -34,8 +34,8 @@ describe Link do
       URLInformationExtractor.should_receive(:new).with('http://bit.ly/a2').and_return(extractor)
       extractor.should_receive(:unwrap).and_return('http://www.caelum.com.br')
       extractor.should_receive(:unwrap).and_return('http://blog.caelum.com.br')
-      extractor.should_receive(:title).and_return('Caelum')
-      extractor.should_receive(:title).and_return('Blog da Caelum')
+      extractor.should_receive(:title).with('http://www.caelum.com.br').and_return('Caelum')
+      extractor.should_receive(:title).with('http://blog.caelum.com.br').and_return('Blog da Caelum')
 
       Link.create_from tweet
       Link.all.size.should == 2
