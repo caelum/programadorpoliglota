@@ -14,15 +14,16 @@ class URLInformationExtractor
     end
   end
   
-  def title
+  def title(default_title = nil)
     begin
       agent = Mechanize.new
       agent.user_agent_alias = 'Mac Safari'
       agent.get(@url).title
     rescue Exception => e
       logger = Logger.new('log/links.log')
-      logger.error "Problems extracting title: #{e}. Will use #{@url} as the title"
-      @url
+      title = default_title || @url
+      logger.error "Problems extracting title: #{e}. Will use #{title} as the title"
+      title
     end
   end
 end
