@@ -34,7 +34,7 @@ group :development, :test do
 	gem 'test_notifier'
 	gem 'autotest-rails'
 	gem 'autotest'
-	gem 'rspec-rails', '>= 2.0.0.beta.19'
+	gem 'rspec-rails', '>= 2.0.0.rc'
 
 	gem 'capybara'
     gem 'database_cleaner'
