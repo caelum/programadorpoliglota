@@ -19,61 +19,73 @@ describe RetweetedUser do
   end
   
   describe '#extract_retweets_from' do
-    it 'should create a new retweeted user when a user who wasnt retweeted before is found will have the amount RTs set at 1' do
+    it 'should create a new retweeted user when a user who wasnt retweeted before is found' do
       user = User.create :twitter_id=>'adrianoalmeida7'
       tag = TagGroup.create :name=>'#java'
       tweet = Tweet.new :text=>'RT @adrianoalmeida7: a tweet', :tag_group=>tag
       
       RetweetedUser.extract_retweets_from tweet
       
-      rt_user = RetweetedUser.first
-      rt_user.user.twitter_id.should == user.twitter_id
-      rt_user.tag_group.id.should == tag.id
-      rt_user.amount.should == 1
+      RetweetedUser.count.should == 1
     end
     
-    it 'should increase the amount of a retweeted user when a user is found' do
+    it 'should create another retweeted user when one was previously created' do
       user = User.create :twitter_id=>'adrianoalmeida7'
       tag = TagGroup.create :name=>'#java'
-      RetweetedUser.create :user=>user, :tag_group=>tag, :amount=>5
+      RetweetedUser.create :user=>user, :tag_group=>tag
       tweet = Tweet.new :text=>'RT @adrianoalmeida7: a tweet', :tag_group=>tag
       
       RetweetedUser.extract_retweets_from tweet
       
-      rt_user = RetweetedUser.first
-      rt_user.user.twitter_id.should == user.twitter_id
-      rt_user.amount.should == 6
+      RetweetedUser.count.should == 2
     end
     
-    it 'should increase the amount of a retweeted user when a user is found for the tweet tag' do
+    it 'should create new retweeted user for different tag groups' do
       user = User.create :twitter_id=>'adrianoalmeida7'
       java_tag = TagGroup.create :name=>'#java'
       ruby_tag = TagGroup.create :name=>'#ruby'
-      RetweetedUser.create :user=>user, :tag_group=>java_tag, :amount=>5
+      RetweetedUser.create :user=>user, :tag_group=>java_tag
       tweet = Tweet.new :text=>'RT @adrianoalmeida7: a tweet', :tag_group=>ruby_tag
       
       RetweetedUser.extract_retweets_from tweet
       
-      rt_user = RetweetedUser.find_by_user_id_and_tag_group_id(user.id, ruby_tag.id)
-      rt_user.amount.should == 1
+      ruby_rts = RetweetedUser.find_all_by_user_id_and_tag_group_id(user.id, ruby_tag.id)
+      ruby_rts.size.should == 1
+      
+      java_rts = RetweetedUser.find_all_by_user_id_and_tag_group_id(user.id, java_tag.id)
+      java_rts.size.should == 1
+
     end
   end
   
   describe '#most_retweeted_for' do
-    it 'should return the 10 most retweeted for the given tag' do
-      tag = TagGroup.create :name=>'#ruby'
-      15.times do
-        user = User.create :twitter_id=>'Baba'
-        RetweetedUser.create :tag_group=>tag, :user=>user, :amount=>10
-      end 
-      user = RetweetedUser.first
-      user.amount = 50
-      user.save
+    it 'should return only 5 retweeteds within the last 7 days' do
+      group = TagGroup.create :name=>'#ruby'
+      (1..10).each do |i|
+        user_in_range = User.create :twitter_id=>"Baba#{i}"
+        RetweetedUser.create :user=>user_in_range, :tag_group=>group, :created_at => 2.days.ago
+      end
+      user_out_range = User.create :twitter_id=>'Lili'
+      RetweetedUser.create :user=>user_out_range, :tag_group=>group, :created_at => 8.days.ago
 
-      result = RetweetedUser.most_retweeted_for(tag)
-      
-      result[0].amount.should == 50
-      result.size.should == 5
+      retweeteds = RetweetedUser.most_retweeted_for(group)
+      retweeteds.should_not =~ user_out_range
+      retweeteds[0].user.twitter_id.should == 'Baba1'
+      retweeteds.size.should == 5
+    end
+
+    it 'should return the 5 most retweeted users ordered by the amount of RTs' do
+      group = TagGroup.create :name=>'#ruby'
+      (1..5).each do |i|
+        user_in_range = User.create :twitter_id=>"Baba#{i}"
+        i.times do 
+          RetweetedUser.create :user=>user_in_range, :tag_group=>group, :created_at => 2.days.ago
+        end
+      end
+
+      retweeteds = RetweetedUser.most_retweeted_for(group)
+      retweeteds[0].user.twitter_id == 'Baba5'
+      retweeteds[4].user.twitter_id == 'Baba1'
     end
   end
 end
