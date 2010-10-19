@@ -567,10 +567,42 @@ body {
   background: #ffffff;
 }
 
-#contentWrap #contentPP .retweetedPeopleLang {
+#contentWrap #contentPP .lang01 .retweetedPeopleLang {
   padding: 4px;
+  text-align: center;
+  background-color: #FF6666;
+}
+#contentWrap #contentPP .lang02 .retweetedPeopleLang {
+  padding: 4px;
+  text-align: center;
+  background-color: #2E35CC;
+}
+#contentWrap #contentPP .lang05 .retweetedPeopleLang {
+  padding: 4px;
+  text-align: center;
+  background-color: #2F6600;
+}
+#contentWrap #contentPP .lang03 .retweetedPeopleLang {
+  padding: 4px;
+  text-align: center;
+  background-color: #6699FF;
+}
+#contentWrap #contentPP .lang04 .retweetedPeopleLang {
+  padding: 4px;
+  text-align: center;
+  background-color: #59597A;
+}
+#contentWrap #contentPP .lang06 .retweetedPeopleLang {
+  padding: 4px;
+  text-align: center;
+  background-color: #398F41;
 }
 
+.retweetedPeopleLang h3 {
+  text-align: center;
+  padding-bottom: 4px;
+  color: #FFFFFF;
+}
 #contentWrap #contentPP .lang04 .shapeLang {
   border: #59597a solid 2px;
 }

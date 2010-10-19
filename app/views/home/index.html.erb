@@ -22,6 +22,7 @@
           <%= next_page_link(1, tag_group.id) %>
         </div>
         <div class="retweetedPeopleLang">
+          <h3>Mais retweetados em <%=tag_group.name %></h3>
           <% @retweeted_users[tag_group.name].each do |ru| %>
             <a target="blank" href="http://www.twitter.com/<%=ru.user.twitter_id%>">
               <%= image_tag image_url_of(ru.user), :class=>'twitter_photo' %>
