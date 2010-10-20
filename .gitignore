@@ -1,4 +1,6 @@
 *.swp
+public.html
+apoie.html
 .bundle
 .rvmrc
 db/*.sqlite3

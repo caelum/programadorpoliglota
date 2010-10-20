@@ -20,7 +20,7 @@ module Programadorpoliglota
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
     # Activate observers that should always be running.
-    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+    config.active_record.observers = :tweet_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -42,5 +42,6 @@ module Programadorpoliglota
     config.generators do |g|
       g.test_framework      :rspec, :fixture => false, :views => false
     end
+
   end
 end
