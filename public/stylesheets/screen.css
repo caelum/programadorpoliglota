@@ -295,7 +295,8 @@ body {
 #contentWrap #contentPP .lang03,
 #contentWrap #contentPP .lang04,
 #contentWrap #contentPP .lang05,
-#contentWrap #contentPP .lang06 {
+#contentWrap #contentPP .lang06,
+#contentWrap #contentPP .lang07 {
   display: block;
   position: relative;
 }
@@ -597,6 +598,11 @@ body {
   text-align: center;
   background-color: #398F41;
 }
+#contentWrap #contentPP .lang07 .retweetedPeopleLang {
+  padding: 4px;
+  text-align: center;
+  background-color: #b9c849;
+}
 
 .retweetedPeopleLang h3 {
   text-align: center;
@@ -705,6 +711,41 @@ body {
   color: #004900;
   background: #ffffff;
 }
+#contentWrap #contentPP .lang07 .shapeLang {
+  border: #b9c849 solid 2px;
+}
+#contentWrap #contentPP .lang07 .shapeLang .btnMoreTweets {
+  background-color: #646464;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang07 .shapeLang .btnMoreTweets:hover {
+  background-color: #1017ae;
+}
+#contentWrap #contentPP .lang07 .shapeLang .linkLang {
+  background-color: #b9c849;
+}
+#contentWrap #contentPP .lang07 .shapeLang .linkLang h3 {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang07 .shapeLang .linkLang li {
+  color: #ffffff;
+  border-bottom: 1px solid #002b00;
+}
+#contentWrap #contentPP .lang07 .shapeLang .linkLang li a {
+  color: #002b00;
+}
+#contentWrap #contentPP .lang07 .shapeLang .linkLang li a:hover {
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang07 .shapeLang .linkLang .btnMore {
+  background: #004900;
+  color: #ffffff;
+}
+#contentWrap #contentPP .lang07 .shapeLang .linkLang .btnMore:hover {
+  color: #004900;
+  background: #ffffff;
+}
+
 #contentWrap #supportPP {
   margin:40px;
 }
