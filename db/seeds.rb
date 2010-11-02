@@ -1,9 +1,15 @@
+# -*- coding: utf-8 -*-
+#Precisa dar truncate antes senão não limpa as tabelas
+ActiveRecord::Base.connection.execute("TRUNCATE #{Tag.table_name}")
+ActiveRecord::Base.connection.execute("TRUNCATE #{TagGroup.table_name}")
+
 java   = TagGroup.create(:name=>'Java')
 ruby   = TagGroup.create(:name=>'Ruby')
 python = TagGroup.create(:name=>'Python')
 dotnet = TagGroup.create(:name=>'.NET')
 php    = TagGroup.create(:name=>'PHP')
 agile  = TagGroup.create(:name=>'Agile')
+javascript  = TagGroup.create(:name=>'Javascript')
 
 java.tags << Tag.create(:name=>'#java')
 java.tags << Tag.create(:name=>'#vraptor')
@@ -31,3 +37,7 @@ agile.tags << Tag.create(:name=>'#agile')
 agile.tags << Tag.create(:name=>'#scrum')
 agile.tags << Tag.create(:name=>'#kanban')
 agile.tags << Tag.create(:name=>'#lean')
+
+javascript.tags << Tag.create(:name=>'#javascript')
+javascript.tags << Tag.create(:name=>'#js')
+javascript.tags << Tag.create(:name=>'#nodejs')
