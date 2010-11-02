@@ -18,6 +18,7 @@ Para ter um conjunto inicial de Tags no banco de dados execute @rake db:seed@.
 
 Depois de adicionadas as Tags, faça a importação dos tweets (dependendo da sua conexão essa tarefa pode demorar):
 
+@rails c@
 @TweetsRetrievalJob.new.import_all_groups_tweets@
 
 E finalmente para executar os testes: @rake spec@.
