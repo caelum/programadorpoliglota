@@ -12,7 +12,11 @@ Programdor Poliglota é distribuído sob a licença MIT e uma cópia da mesma po
 
 h1. Configurando ambiente e executando a aplicação.
 
-Para rodar, primeiramente configure seu banco de dados em config/database.yml (há um arquivo de exemplo que pode ser seguido). Instale as gems necessárias com @bundle install@ (talvez seja necessário instalar o bundler antes). Depois faça rake db:migrate.
+Para rodar, primeiramente configure seu banco de dados em
+config/database.yml (há um arquivo de exemplo que pode ser
+seguido). Instale as gems necessárias com @bundle install@ (talvez
+seja necessário instalar o bundler antes). Depois faça @rake db:create@
+seguido de @rake db:migrate@.
 
 Para ter um conjunto inicial de Tags no banco de dados execute @rake db:seed@.
 
