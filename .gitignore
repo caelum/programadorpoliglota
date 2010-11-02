@@ -1,6 +1,7 @@
 *.swp
 public.html
 apoie.html
+public/index.html
 .bundle
 .rvmrc
 db/*.sqlite3
