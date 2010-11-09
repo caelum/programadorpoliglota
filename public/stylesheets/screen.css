@@ -948,6 +948,7 @@ body {
 .size3 {
   width: 300px;
   margin-right: 20px;
+  min-height: 650px;
 }
 .size4 {
   width: 220px;
