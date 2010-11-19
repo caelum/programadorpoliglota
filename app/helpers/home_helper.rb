@@ -11,6 +11,10 @@ module HomeHelper
     user.image_url ||= '/images/default_twitter.png'
   end
   
+  def replace_text_links_for_clickable_links(text)
+    text.sub(/http[s]?:\/\/+[\w\d:\#\@\%\/;\$\(\)\~\_\?\+\-\=\\\.&]+/) { |link| "<a href='#{link}' target='_blank'>#{link}</a>" }
+  end
+  
   def about_link(id)
     link_to raw('<span>Apoie o <br /> movimento</span>'), about_path, :id=>id
   end  

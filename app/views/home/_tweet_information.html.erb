@@ -5,7 +5,7 @@
   <p style="min-height:100px;">
 	<span class='tweet_text'>
     	<a target="blank" href="http://www.twitter.com/<%=tweet.user.twitter_id%>"><%= tweet.user.twitter_id %></a> 
-    	<%= raw(tweet.text) %>
+    	<%= raw(replace_text_links_for_clickable_links tweet.text) %>
 	</span>
 	<br/>
 	<span class="twitter_time">

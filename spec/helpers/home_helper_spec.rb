@@ -24,4 +24,13 @@ describe HomeHelper do
       helper.image_url_of(user).should == '/images/default_twitter.png'
     end
   end
+  
+  describe '#replace_text_links_for_clickable_links' do
+    it 'should return the text links as clickable links' do
+      text = 'Esse eh um tweet com link clicavel: http://www.caelum.com.br'
+      textWithClickacleLinks = "Esse eh um tweet com link clicavel: <a href='http://www.caelum.com.br' target='_blank'>http://www.caelum.com.br</a>"
+      
+      helper.replace_text_links_for_clickable_links(text).should == textWithClickacleLinks
+    end
+  end  
 end

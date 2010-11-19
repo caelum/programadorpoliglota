@@ -83,23 +83,5 @@ describe TweetsRetrievalJob do
     
       Tweet.all.size.should == 2
     end
-    
-    it "should return a new tweet with text links replaced for clickable links" do
-      java_tag_group = TagGroup.create :name=> '#java'
-      
-      user = User.create :twitter_id => '@lucasas', :image_url => 'foto.png'
-      User.should_receive(:create_user_if_not_exists).and_return(user)
-      
-      raw_tweet = Object.new
-      raw_tweet.should_receive(:text).and_return('Um tweet com um link: http://www.caelum.com.br')
-      raw_tweet.should_receive(:created_at).and_return(Time.now)
-      raw_tweet.should_receive(:id).at_least(:twice).and_return('123456')
-      
-      Tweet.should_receive(:already_exists_in_group?).with(raw_tweet, java_tag_group).and_return(false)
-      TweetsRetrievalJob.new.import_raw_tweet_to_group raw_tweet, java_tag_group
-      
-      lastTweet = Tweet.all.last
-      lastTweet.text.should == "Um tweet com um link: <a href='http://www.caelum.com.br' target='_blank'>http://www.caelum.com.br</a>"
-    end
   end
 end

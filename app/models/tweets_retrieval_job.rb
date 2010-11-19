@@ -22,7 +22,7 @@ class TweetsRetrievalJob
   def import_raw_tweet_to_group(raw_tweet, tag_group)
     unless Tweet.already_exists_in_group?(raw_tweet, tag_group)
       user = User.create_user_if_not_exists raw_tweet
-      new_tweet = Tweet.create :text=>replace_text_links_for_clickable_links(raw_tweet.text), :date=>raw_tweet.created_at, :tag_group=>tag_group, :tweet_id=>raw_tweet.id
+      new_tweet = Tweet.create :text=>raw_tweet.text, :date=>raw_tweet.created_at, :tag_group=>tag_group, :tweet_id=>raw_tweet.id
       new_tweet.user = user
       tag_group.tweets << new_tweet
 
@@ -32,10 +32,5 @@ class TweetsRetrievalJob
     else
       Rails.logger.debug "Tweet ##{raw_tweet.id} already exists for the #{tag_group.name} group, therefore skipping it"
     end 
-  end
-  
-  private
-  def replace_text_links_for_clickable_links(text)
-    text.sub(/http[s]?:\/\/+[\w\d:\#\@\%\/;\$\(\)\~\_\?\+\-\=\\\.&]+/) { |link| "<a href='#{link}' target='_blank'>#{link}</a>" }
   end
 end
