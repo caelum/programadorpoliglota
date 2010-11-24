@@ -16,7 +16,6 @@ java.tags << Tag.create(:name=>'#vraptor', :query=>'#vraptor')
 java.tags << Tag.create(:name=>'#jsf', :query=>'#jsf')
 java.tags << Tag.create(:name=>'#wicket', :query=>'#wicket')
 java.tags << Tag.create(:name=>'#struts', :query=>'#struts')
-java.tags << Tag.create(:name=>'#android', :query=>'#android')
 
 ruby.tags << Tag.create(:name=>'#ruby', :query=>'#ruby')
 ruby.tags << Tag.create(:name=>'#rails', :query=>'#rails')
