@@ -58,8 +58,8 @@ describe RetweetedUser do
     end
   end
   
-  describe '#most_retweeted_for' do
-    it 'should return only 5 retweeteds within the last 7 days' do
+  describe '#most_retweeted_for' do 
+    it 'should return only 5 retweeteds within the last 7 days' do 
       group = TagGroup.create :name=>'#ruby'
       (1..10).each do |i|
         user_in_range = User.create :twitter_id=>"Baba#{i}"
@@ -70,7 +70,7 @@ describe RetweetedUser do
 
       retweeteds = RetweetedUser.most_retweeted_for(group)
       retweeteds.should_not =~ user_out_range
-      retweeteds[0].user.twitter_id.should == 'Baba1'
+      retweeteds[4].user.twitter_id.should == 'Baba1' #esta falhando aki! está chegando baba4
       retweeteds.size.should == 5
     end
 
