@@ -20,7 +20,7 @@
 	<div>
 		<ul id="menuLang">
 			<% @tag_g.each do |tag_group| %>
-				<li ><a id="link0<%=tag_group.id %>" href="#" class="linkLang" title="Mostra linguagem"> #<%= tag_group.name %> </a></li>
+				<li ><a id="<%=tag_group.id %>" href="#" class="linkLang" title="Mostra linguagem"> #<%= tag_group.name %> </a></li>
 			<%end%>
 		</ul>
 	</div>

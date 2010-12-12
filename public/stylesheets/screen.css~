@@ -922,6 +922,7 @@ position:relative;
 top:-10px;
 padding-top:4px;
 }
+
 #menuLang{
   display: block;
   position: relative;
@@ -930,14 +931,17 @@ padding-top:4px;
   margin-top: 12px;
 width:260px;
 }
+
 #menuLang li{
 display:inline-block;
 padding:5px;
 }
+
 .linkLang{
 color:white;
 text-decoration:none;
 }
+
 .linkLang:hover{
 color:black;
 background:white;

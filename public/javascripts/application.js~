@@ -50,22 +50,4 @@ $(document).ready(function(){
 	$('#link01').click(function(){
 		$('div#lang01').show();
 	});
-	$('#link02').click(function(){
-			$('div#lang02').show();
-		});
-	$('#link03').click(function(){
-			$('div#lang03').show();
-		});
-	$('#link04').click(function(){
-			$('div#lang04').show();
-		});
-	$('#link05').click(function(){
-			$('div#lang05').show();
-		});
-	$('#link06').click(function(){
-			$('div#lang06').show();
-		});
-	$('#link07').click(function(){
-			$('div#lang07').show();
-		});
 });

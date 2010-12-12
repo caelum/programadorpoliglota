@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
     page = 1
     @tag_groups = TagGroup.all
-	@tag_g = @tag_groups.sort {|a,b| a[:name].length <=> b[:name].length}  #organiza pelo comprimento do nome para caber no cabeçalho do site.
+	@tag_g = @tag_groups.sort {|a,b| a[:name].length <=> b[:name].length} 
     @tweets = {}
     @links = {}
     @retweeted_users = {}
