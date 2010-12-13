@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
   caches_page :index, :support
 
+	before_filter :load_tag_groups, :only=> [:support,:index]
+	
   def index
     page = 1
-    @tag_groups = TagGroup.all
-	@tag_g = @tag_groups.sort {|a,b| a[:name].length <=> b[:name].length}  #organiza pelo comprimento do nome para caber no cabeçalho do site.
     @tweets = {}
     @links = {}
     @retweeted_users = {}
@@ -41,4 +41,9 @@ class HomeController < ApplicationController
   def retrieve_tweets_for(tag_group, page)
     Tweet.last_tweets_for tag_group, :page=> page
   end  
+
+  def load_tag_groups
+	@tag_groups = TagGroup.all
+	@tag_g = @tag_groups.sort {|a,b| a[:name].length <=> b[:name].length}  #organiza pelo comprimento do nome para caber no cabeçalho do site.
+  end
 end

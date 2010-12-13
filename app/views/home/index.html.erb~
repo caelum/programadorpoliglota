@@ -1,6 +1,6 @@
 <div id="contentPP" class="size1">
   <% @tag_groups.each do |tag_group| %>
-    <div class="size3 bSpace01 fLeft lang0<%=tag_group.id %>" id="<%=tag_group.name %>">
+    <div class="size3 bSpace01 fLeft lang0<%=tag_group.id %>" id="lang0<%=tag_group.id %>">
       <h2 class="headerLang"><%=tag_group.name%></h2>
       <div class="shapeLang">
 		<div id="hideLang"><a href="#" title="Esconder esta linguagem" class="hide">

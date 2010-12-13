@@ -22,50 +22,37 @@
 		});
 	}
 
+// recupera todos os cookies e mostra os grupos de tags de acordo com os valores dos cookies
 $(document).ready(function(){
-	$('#lang01 a.hide').click(function(){
-		$('div#lang01').hide();
-	});
-	$('#lang02 a.hide').click(function(){
-			$('div#lang02').hide();
-		});
-	$('#lang03 a.hide').click(function(){
-			$('div#lang03').hide();
-		});
-	$('#lang04 a.hide').click(function(){
-			$('div#lang04').hide();
-		});
-	$('#lang05 a.hide').click(function(){
-			$('div#lang05').hide();
-		});
-	$('#lang06 a.hide').click(function(){
-			$('div#lang06').hide();
-		});
-	$('#lang07 a.hide').click(function(){
-			$('div#lang07').hide();
+	var i=0;
+	for (i=1;i<=7;i++) {
+		var id = 'lang0'+i;
+		if ($.cookie(id) == null) //cookie sem valor, mostra todas as linguagens
+		    $('div#lang0'+i).show();
+		else if ($.cookie(id) == 1)
+		    // Exibimos
+		    $('div#lang0'+i).show();
+		else if ($.cookie(id) == 0)
+		    $('div#lang0'+i).hide();
+	}
+});
+
+//esconde grupode de tags e grava cookie
+$(document).ready(function(){
+		$('a.hide').click(function(){
+				var id = $(this).parent().parent().parent().attr('id');
+				$('div#'+id).hide(function(){
+						$.cookie(id, 0, {expires: 365});
+				});
 		});
 });
 
+//mostra grupo de tags e grava cookie
 $(document).ready(function(){
-	$('#link01').click(function(){
-		$('div#lang01').show();
+	$('a.linkLang').click(function(){
+		var id = 'lang0'+$(this).attr('id');
+		$('div#'+id).show('fast',function(){
+			$.cookie(id, 1, {expires: 365});
+		});
 	});
-	$('#link02').click(function(){
-			$('div#lang02').show();
-		});
-	$('#link03').click(function(){
-			$('div#lang03').show();
-		});
-	$('#link04').click(function(){
-			$('div#lang04').show();
-		});
-	$('#link05').click(function(){
-			$('div#lang05').show();
-		});
-	$('#link06').click(function(){
-			$('div#lang06').show();
-		});
-	$('#link07').click(function(){
-			$('div#lang07').show();
-		});
 });
