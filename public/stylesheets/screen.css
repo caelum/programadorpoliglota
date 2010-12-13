@@ -262,6 +262,7 @@ body {
   font-weight: 700;
   color: #505050;
   z-index: 600;
+
 }
 #contentWrap #contentPP .shapeLang {
   display: block;
@@ -941,4 +942,13 @@ text-decoration:none;
 .linkLang:hover{
 color:black;
 background:white;
+}
+.dragWrap{}
+.placeHolder{
+min-height: 650px;
+width: 300px;
+background-color:green;
+float: left;
+margin-right: 20px;
+
 }

@@ -262,6 +262,7 @@ body {
   font-weight: 700;
   color: #505050;
   z-index: 600;
+
 }
 #contentWrap #contentPP .shapeLang {
   display: block;
@@ -922,7 +923,6 @@ position:relative;
 top:-10px;
 padding-top:4px;
 }
-
 #menuLang{
   display: block;
   position: relative;
@@ -931,18 +931,22 @@ padding-top:4px;
   margin-top: 12px;
 width:260px;
 }
-
 #menuLang li{
 display:inline-block;
 padding:5px;
 }
-
 .linkLang{
 color:white;
 text-decoration:none;
 }
-
 .linkLang:hover{
 color:black;
 background:white;
+}
+.dragWrap{}
+.placeHolder{
+width:280px;
+height:400px;
+background-color:green;
+float: left;
 }

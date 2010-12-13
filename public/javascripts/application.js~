@@ -50,9 +50,22 @@ $(document).ready(function(){
 //mostra grupo de tags e grava cookie
 $(document).ready(function(){
 	$('a.linkLang').click(function(){
-		var id = $(this).attr('id');
+		var id = 'lang0'+$(this).attr('id');
 		$('div#'+id).show('fast',function(){
 			$.cookie(id, 1, {expires: 365});
 		});
 	});
+});
+
+$(function(){
+			// configura drag and drop
+			$(".dragWrap").sortable({
+				connectWith: ['.dragWrap'],
+				placeholder: 'placeHolder',
+				scroll: true,
+				revert: true
+				//stop: function( e, ui ) {
+				//salvaCookie();
+				//}
+			});
 });

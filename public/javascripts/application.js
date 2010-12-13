@@ -56,3 +56,16 @@ $(document).ready(function(){
 		});
 	});
 });
+
+$(function(){
+			// configura drag and drop
+			$(".dragWrap").sortable({
+				connectWith: ['.dragWrap'],
+				placeholder: 'placeHolder',
+				scroll: true,
+				revert: true
+				//stop: function( e, ui ) {
+				//salvaCookie();
+				//}
+			});
+});
