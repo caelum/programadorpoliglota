@@ -195,7 +195,7 @@ body {
   overflow: hidden;
 
 }
-#contentWrap #contentPP {
+#contentPP {
   display: block;
   position: relative;
   overflow: hidden;
@@ -207,7 +207,7 @@ body {
   /*Color Scheme*/
 
 }
-#contentWrap #contentPP .moreLangOptions {
+.moreLangOptions {
   display: block;
   position: relative;
   overflow: hidden;
@@ -221,10 +221,10 @@ body {
   -webikit-border-radius: 4px;
   -moz-border-radius: 4px;
 }
-#contentWrap #contentPP .moreLangOptions:hover {
+#contentWrap .moreLangOptions:hover {
   background: #1e1e1e;
 }
-#contentWrap #contentPP .moreLangOptions span {
+#contentWrap .moreLangOptions span {
   display: block;
   position: relative;
   overflow: hidden;
@@ -377,7 +377,7 @@ body {
   margin: 0px;
   padding: 10px 0px 10px 5px;
 }
-#contentWrap #contentPP .shapeLang .linkLang ul {
+#contentPP .shapeLang .linkLang ul {
   display: block;
   position: relative;
   overflow: hidden;
@@ -385,7 +385,7 @@ body {
   height: auto;
   float: left;
 }
-#contentWrap #contentPP .shapeLang .linkLang ul li {
+#contentPP .shapeLang .linkLang ul li {
   display: block;
   position: relative;
   overflow: hidden;
@@ -962,3 +962,4 @@ background:white;
 .dragBar:hover{
 	color:lightgrey;
 }
+.center1{width:900px;margin: 0px auto;}

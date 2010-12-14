@@ -90,5 +90,4 @@ $(function(){
 				order += $(this).parent().attr('id')+',';
 			});
 			$.cookie('order',order, {expires: 365});
-			alert(order);
 		};

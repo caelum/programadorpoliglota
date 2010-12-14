@@ -1,42 +1,44 @@
-<div id="contentPP" class="size1">
-  <% @tag_groups.each do |tag_group| %>
-	<div class="dragWrap" id="wrap<%=tag_group.id %>">
-		<div class="size3 bSpace01 fLeft lang0<%=tag_group.id %>" id="lang0<%=tag_group.id %>">
-		  <h2 class="headerLang"><%=tag_group.name%></h2>
-		  <div class="shapeLang">
-			<div id="hideLang"><a href="#" title="Esconder esta linguagem" class="hide">
-				<img src="images/hide_button.gif" alt="Botão de esconder linguagem"/></a>
+<div class="center">
+	<div id="contentPP" class="size1">
+	  <% @tag_groups.each do |tag_group| %>
+		<div class="dragWrap" id="wraplang0<%=tag_group.id %>">
+			<div class="size3 bSpace01 fLeft lang0<%=tag_group.id %>" id="lang0<%=tag_group.id %>">
+			  <h2 class="headerLang"><%=tag_group.name%></h2>
+			  <div class="shapeLang">
+				<div id="hideLang"><a href="#" title="Esconder esta linguagem" class="hide">
+					<img src="images/hide_button.gif" alt="Botão de esconder linguagem"/></a>
+				</div>
+				<div class="linkLang">
+				  <p class="dragBar">::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</p>
+				  <h3>Top links</h3>
+				  <ul>
+				    <% @links[tag_group.name].each do |l| %>
+				      <li style="min-height:30px;">
+				        <a target="blank" href="<%= l.url %>"><%= truncate(l.title, :length=>80, :separator=>' ') %></a>
+				      </li>
+				    <% end%>
+				  </ul>
+				</div>
+				<ul class="newsLang">
+				  <% @tweets[tag_group.name].each do |t| %>
+				    <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
+				  <% end %>
+				</ul>
+				<div class='bloco_ver_mais'> 
+				  <%= next_page_link(1, tag_group.id) %>
+				</div>
+				<div class="retweetedPeopleLang">
+				  <h3>Mais retweetados em <%=tag_group.name %></h3>
+				  <% @retweeted_users[tag_group.name].each do |ru| %>
+				    <a target="blank" href="http://www.twitter.com/<%=ru.user.twitter_id%>">
+				      <%= image_tag image_url_of(ru.user), :class=>'twitter_photo' %>
+				    </a>
+				  <% end %>
+				</div>
+			  </div>
 			</div>
-		    <div class="linkLang">
-			  <p class="dragBar">::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</p>
-		      <h3>Top links</h3>
-		      <ul>
-		        <% @links[tag_group.name].each do |l| %>
-		          <li style="min-height:30px;">
-		            <a target="blank" href="<%= l.url %>"><%= truncate(l.title, :length=>80, :separator=>' ') %></a>
-		          </li>
-		        <% end%>
-		      </ul>
-		    </div>
-		    <ul class="newsLang">
-		      <% @tweets[tag_group.name].each do |t| %>
-		        <%= render :partial=>'tweet_information', :locals=>{:tweet => t} %>
-		      <% end %>
-		    </ul>
-		    <div class='bloco_ver_mais'> 
-		      <%= next_page_link(1, tag_group.id) %>
-		    </div>
-		    <div class="retweetedPeopleLang">
-		      <h3>Mais retweetados em <%=tag_group.name %></h3>
-		      <% @retweeted_users[tag_group.name].each do |ru| %>
-		        <a target="blank" href="http://www.twitter.com/<%=ru.user.twitter_id%>">
-		          <%= image_tag image_url_of(ru.user), :class=>'twitter_photo' %>
-		        </a>
-		      <% end %>
-		    </div>
-		  </div>
 		</div>
+	  <% end %>
 	</div>
-  <% end %>
-  <a class="moreLangOptions size1_null" href="http://twitter.com/?status=@progpoliglota"><span>Alguma linguagem faltando? Solicite mais linguagens.</span></a>
+	<a class="moreLangOptions size1_null" href="http://twitter.com/?status=@progpoliglota"><span>Alguma linguagem faltando? Solicite mais linguagens.</span></a>
 </div>
