@@ -499,7 +499,7 @@ body {
 }
 #contentWrap #contentPP .lang03 .shapeLang .linkLang li {
   color: #ffffff;
-  border-bottom: 1px solid #02359b;
+  border-bottom: 0px solid #02359b;
 }
 #contentWrap #contentPP .lang03 .shapeLang .linkLang li a {
   color: #02359b;
@@ -945,11 +945,15 @@ background:white;
 }
 .dragWrap{}
 .placeHolder{
-min-height: 650px;
-width: 300px;
-background-color:green;
-float: left;
-margin-right: 20px;
+	min-height: 780px;
+	width: 300px;
+	margin-top: 10px;
+	background-color:#ecbcc5;
+	float: left;
+	margin-right: 20px;
+	border-radius: 4px;
+	-webikit-border-radius: 4px;
+	-moz-border-radius: 4px;
 }
 .dragBar{
 	cursor:move;

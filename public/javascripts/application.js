@@ -67,8 +67,15 @@ $(function(){
 				scroll: true,
 				opacity: 0.8,
 				revert: true
-				//stop: function( e, ui ) {
-				//salvaCookie();
-				//}
+			});
+			$( ".dragWrap" ).sortable({
+			   stop: function(event, ui) { salvaCookie();}
 			});
 });
+		var salvaCookie = function(){
+			order = "";
+			$('.headerLang').each(function(){
+				order += $(this).parent().attr('id');
+			});
+			alert(order);
+		};
