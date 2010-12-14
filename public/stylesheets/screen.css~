@@ -499,7 +499,7 @@ body {
 }
 #contentWrap #contentPP .lang03 .shapeLang .linkLang li {
   color: #ffffff;
-  border-bottom: 0px solid #02359b;
+  border-bottom: 1px solid #02359b;
 }
 #contentWrap #contentPP .lang03 .shapeLang .linkLang li a {
   color: #02359b;

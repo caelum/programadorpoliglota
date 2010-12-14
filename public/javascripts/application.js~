@@ -71,11 +71,24 @@ $(function(){
 			$( ".dragWrap" ).sortable({
 			   stop: function(event, ui) { salvaCookie();}
 			});
+			// recupera cookie para dispor os grupos de tags na ordem, caso haja cookie
+			if( $.cookie('order') ) {
+				var ordem = $.cookie('order').split(',');
+
+				// ordena grupos de tags				
+				for( i = 0; i<= ordem.length; i++ ){
+					$('#contentPP').append($('#wrap'+ordem[i]));
+				}
+
+			} else {
+				$.cookie('order', '', { expires: 7, path: '/' });
+			}
 });
 		var salvaCookie = function(){
 			order = "";
 			$('.headerLang').each(function(){
-				order += $('.headerLang').parent().attr('id');
+				order += $(this).parent().attr('id')+',';
 			});
+			$.cookie('order',order, {expires: 365});
 			alert(order);
 		};
