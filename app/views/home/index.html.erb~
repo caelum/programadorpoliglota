@@ -1,11 +1,11 @@
 <div id="contentPP" class="size1">
   <% @tag_groups.each do |tag_group| %>
-	<div class="dragWrap">asas
+	<div class="dragWrap">
 		<div class="size3 bSpace01 fLeft lang0<%=tag_group.id %>" id="lang0<%=tag_group.id %>">
 		  <h2 class="headerLang"><%=tag_group.name%></h2>
 		  <div class="shapeLang">
 			<div id="hideLang"><a href="#" title="Esconder esta linguagem" class="hide">
-				<img src="images/hide_button.gif" alt="Botão de esconder linguagem"/></a>
+				<img src="images/hide_button.png" alt="Botão de esconder linguagem" width="18px" height="18px"/></a>
 			</div>
 		    <div class="linkLang">
 		      <h3>Top links</h3>

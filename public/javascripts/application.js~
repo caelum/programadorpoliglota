@@ -24,9 +24,11 @@
 
 // recupera todos os cookies e mostra os grupos de tags de acordo com os valores dos cookies
 $(document).ready(function(){
+	
 	var i=0;
 	for (i=1;i<=7;i++) {
-		var id = 'lang0'+i;
+		var id = "lang0"+i;
+		//alert($.cookie(id));
 		if ($.cookie(id) == null) //cookie sem valor, mostra todas as linguagens
 		    $('div#lang0'+i).show();
 		else if ($.cookie(id) == 1)
@@ -41,7 +43,8 @@ $(document).ready(function(){
 $(document).ready(function(){
 		$('a.hide').click(function(){
 				var id = $(this).parent().parent().parent().attr('id');
-				$('div#'+id).hide(function(){
+				$('div#'+id).hide('fast',function(){
+						alert(id);
 						$.cookie(id, 0, {expires: 365});
 				});
 		});

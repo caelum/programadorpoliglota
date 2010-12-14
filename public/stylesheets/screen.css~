@@ -945,8 +945,10 @@ background:white;
 }
 .dragWrap{}
 .placeHolder{
-width:280px;
-height:400px;
+min-height: 650px;
+width: 300px;
 background-color:green;
 float: left;
+margin-right: 20px;
+
 }
