@@ -44,7 +44,6 @@ $(document).ready(function(){
 		$('a.hide').click(function(){
 				var id = $(this).parent().parent().parent().attr('id');
 				$('div#'+id).hide('fast',function(){
-						alert(id);
 						$.cookie(id, 0, {expires: 365});
 				});
 		});
@@ -66,6 +65,7 @@ $(function(){
 				connectWith: ['.dragWrap'],
 				placeholder: 'placeHolder',
 				scroll: true,
+				opacity: 0.8,
 				revert: true
 				//stop: function( e, ui ) {
 				//salvaCookie();

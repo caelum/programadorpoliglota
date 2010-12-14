@@ -44,7 +44,6 @@ $(document).ready(function(){
 		$('a.hide').click(function(){
 				var id = $(this).parent().parent().parent().attr('id');
 				$('div#'+id).hide('fast',function(){
-						alert(id);
 						$.cookie(id, 0, {expires: 365});
 				});
 		});

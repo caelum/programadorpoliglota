@@ -950,5 +950,11 @@ width: 300px;
 background-color:green;
 float: left;
 margin-right: 20px;
-
+}
+.dragBar{
+	cursor:move;
+	color:white
+}
+.dragBar:hover{
+	color:lightgrey;
 }
