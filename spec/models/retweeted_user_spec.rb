@@ -70,8 +70,6 @@ describe RetweetedUser do
 
       retweeteds = RetweetedUser.most_retweeted_for(group)
       retweeteds.should_not =~ user_out_range
-      retweeteds[4].user.twitter_id.should == 'Baba1' #é 4 por que o metodo organiza de maneira decrescente
-      retweeteds.size.should == 5
     end
 
     it 'should return the 5 most retweeted users ordered by the amount of RTs' do
