@@ -1,4 +1,4 @@
-<div class="center1">
+<div class="center">
 	<div id="contentPP" class="size1">
 	  <% @tag_groups.each do |tag_group| %>
 		<div class="dragWrap" id="wraplang0<%=tag_group.id %>">

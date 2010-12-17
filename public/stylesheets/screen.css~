@@ -962,4 +962,4 @@ background:white;
 .dragBar:hover{
 	color:lightgrey;
 }
-.center1{width:900px;margin: 0px auto;}
+.center1{margin: 0px auto;}
